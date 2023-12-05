@@ -1,0 +1,15 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/mohammad-shamsodini-99593714b/
+    - icon: github
+      text: Github
+      href: https://github.com/mlori77
+---
+
+I am M. S Lori, a student of mechanical engineering at Virginia Tech. In this blog, I furnish detailed information on various Machine Learning models.
