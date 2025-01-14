@@ -3,7 +3,7 @@ title: "Regression Machine Learning Methods"
 author: "M. S. Lori"
 date: "2023-11-02"
 categories: [Regression]
-image: "RegressionMain.jpg"
+image: "mtheme.jpg"
 ---
 
 In this post, we use some regression machine learning methods on a dataset and make a comparison of outcomes for different methods.  The applying methods are 1- **Random Forest Regression** 2- **Support Vector Regression (SVR)** 3- **Multiple Linear Regression** and 4- **Linear Regression**
