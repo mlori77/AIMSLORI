@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Machine Learning Blog - Mohammad Shamsodini Lori"
+  title: "AI for Science"
   navbar:
     right:
       - about.qmd
