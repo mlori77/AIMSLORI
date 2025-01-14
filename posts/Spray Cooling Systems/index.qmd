@@ -2,7 +2,7 @@
 title: "Spray Cooling Prediction by ML and DL"
 author: "M. S. Lori"
 date: "2023-11-02"
-categories: [Regression]
+categories: [Paper]
 image: "mtheme.jpg"
 ---
 
