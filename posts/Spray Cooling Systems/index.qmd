@@ -69,175 +69,468 @@ X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size = 0.2, ra
 y_test.columns = ['y_test']
 ```
 
+Model definition, Hyperparameters tuning and Prediction
+
 ``` python
-## Splitting the dataset into the Training set and Test set
-Y = pd.DataFrame(data['Life expectancy'], columns = ['Life expectancy'])
-data.drop(['Life expectancy'], inplace = True, axis = 1)
+from sklearn.ensemble import RandomForestRegressor
+rf = RandomForestRegressor(random_state = 42)
+from pprint import pprint
 
-all_data = pd.concat([data, country_dummy, status_dummy], axis = 1)
+print('Parameters currently in use:\n')
+pprint(rf.get_params())
 
-X_train, X_test, y_train, y_test = train_test_split(all_data, Y, test_size = 0.2, random_state = 0)
 
+from sklearn.model_selection import RandomizedSearchCV
+
+n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
+
+max_features = ['auto', 'sqrt']
+
+max_depth = [int(x) for x in np.linspace(10, 110, num = 11)]
+max_depth.append(None)
+
+min_samples_split = [2, 5, 10]
+
+min_samples_leaf = [1, 2, 4]
+
+bootstrap = [True, False]
+random_grid = {'n_estimators': n_estimators,
+               'max_features': max_features,
+               'max_depth': max_depth,
+               'min_samples_split': min_samples_split,
+               'min_samples_leaf': min_samples_leaf,
+               'bootstrap': bootstrap}
+pprint(random_grid)
+
+
+
+rf = RandomForestRegressor()
+
+rf_random = RandomizedSearchCV(estimator = rf, param_distributions = random_grid, n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1)
+rf_random.fit(X_train, y_train)
+
+rf_random.best_params_
+
+
+predict = rf_random.predict(X_test)
+```
+
+2- **Support Vector Regression**
+
+[Importing needed libraries:]{.underline}
+
+``` python
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import r2_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVR
+from sklearn.model_selection import RandomizedSearchCV
+from pprint import pprint
+```
+
+[Loading dataset:]{.underline}
+
+``` python
+data = pd.read_csv("heatml.csv")
+```
+
+[Encoding:]{.underline}
+
+``` python
+column = data.columns.to_list()
+data.columns = [a.strip() for a in column]
+
+
+fluid_dummy = pd.get_dummies(data['Fluid'], drop_first=True)
+data.drop(['Fluid', 'SAT'], inplace=True, axis=1)
+```
+
+[Correlation matrix:]{.underline}
+
+``` python
+
+correlation_matrix = corr_data.corr()
+plt.figure(figsize=(16, 12))
+sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
+plt.show()
+```
+
+[Randomly splitting the dataset into training and testing subsets and Scaling]{.underline}
+
+``` python
+Y = pd.DataFrame(data['Nu'], columns=['Nu'])
+data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
+
+
+X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size=0.2, random_state=0)
+y_test.columns = ['y_test']
+
+
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+```
+
+Model definition, Hyperparameters tuning and Prediction
+
+``` python
+
+svm = SVR()
+
+
+print('Parameters currently in use:\n')
+pprint(svm.get_params())
+
+
+C = [0.01, 0.1, 1, 10, 100, 1000]
+epsilon = [0.01, 0.05, 0.1, 0.2, 0.5]
+kernel = ['rbf', 'poly', 'sigmoid']
+gamma = ['scale', 'auto', 0.001, 0.01, 0.1]
+
+
+random_grid = {
+    'C': C,
+    'epsilon': epsilon,
+    'kernel': kernel,
+    'gamma': gamma
+}
+pprint(random_grid)
+
+
+svm = SVR()
+
+
+svm_random = RandomizedSearchCV(
+    estimator=svm,
+    param_distributions=random_grid,
+    n_iter=100,
+    cv=5,  
+    verbose=2,
+    random_state=42,
+    n_jobs=-1
+)
+
+
+svm_random.fit(X_train, y_train)
+
+
+print("Best parameters:", svm_random.best_params_)
+
+
+predict = svm_random.predict(X_test)  
+```
+
+3- **Decision Tree**
+
+[Importing needed libraries:]{.underline}
+
+``` python
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import r2_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.model_selection import RandomizedSearchCV
+from pprint import pprint
+```
+
+[Loading dataset:]{.underline}
+
+``` python
+data = pd.read_csv("heatml.csv")
+```
+
+[Encoding:]{.underline}
+
+``` python
+column = data.columns.to_list()
+data.columns = [a.strip() for a in column]
+
+
+fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
+data.drop(['Fluid', 'SAT'], inplace = True, axis = 1)
+```
+
+[Correlation matrix:]{.underline}
+
+``` python
+corr_data = data.copy()
+
+correlation_matrix = corr_data.corr()
+plt.figure(figsize=(16,12))
+sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
+plt.show()
+```
+
+[Randomly splitting the dataset into training and testing subsets]{.underline}
+
+``` python
+Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
+data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+
+X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size = 0.2, random_state = 0)
 y_test.columns = ['y_test']
 ```
 
-[Implement, prediction and evaluation of Random Forest Regression:]{.underline}
+Model definition, Hyperparameters tuning and Prediction
 
 ``` python
-## Random Forest Regression model
-regressor = RandomForestRegressor(n_estimators = 10, random_state = 0)
-regressor.fit(X_train, y_train.values.ravel())
 
-#Predicting the Test set results
-y_pred = pd.DataFrame(regressor.predict(X_test), columns= ['y_pred'])
-
-y_test.index = y_pred.index
-
-random_forest_result = pd.concat([y_pred, y_test], axis = 1)
+dt = DecisionTreeRegressor(random_state=42)
 
 
-# Evaluating the Model Performance
-r2_random_forest = r2_score(y_test, y_pred)
-```
 
-[Implement, prediction and evaluation of Support Vector Regression (SVR):]{.underline}
+max_depth = [int(x) for x in np.linspace(10, 110, num=11)]
+max_depth.append(None)
 
-``` python
-##Support Vector Regression (SVR) model
-# Feature scaling
-sc_X = StandardScaler()
-sc_y = StandardScaler()
-X_train_scaled = sc_X.fit_transform(X_train)
-y_train_scaled = sc_y.fit_transform(y_train)
+min_samples_split = [2, 5, 10]
 
-regressor = SVR(kernel = 'rbf')
-regressor.fit(X_train_scaled, y_train_scaled.ravel())
 
-##Predicting the Test set results
-y_pred = regressor.predict(sc_X.transform(X_test))
-y_pred = pd.DataFrame(sc_y.inverse_transform(pd.DataFrame(y_pred)), columns= ['y_pred'])
+min_samples_leaf = [1, 2, 4]
 
-y_test.index = y_pred.index
 
-svr_result = pd.concat([y_pred, y_test], axis = 1)
+max_features = ['auto', 'sqrt', None]
 
-# Evaluating the Model Performance
 
-r2_svm = r2_score(y_test, y_pred)
-```
+criterion = ['mse', 'friedman_mse', 'mae']
 
-[Implement, prediction and evaluation of Multiple Linear Regression:]{.underline}
 
-``` python
-##Multiple Linear Regression model
-regressor = LinearRegression()
-regressor.fit(X_train, y_train)
+random_grid = {
+    'max_depth': max_depth,
+    'min_samples_split': min_samples_split,
+    'min_samples_leaf': min_samples_leaf,
+    'max_features': max_features,
+    'criterion': criterion
+}
+pprint(random_grid)
 
-# Predicting the Test set results
 
-y_pred = pd.DataFrame(regressor.predict(X_test), columns= ['y_pred'])
 
-y_test.index = y_pred.index
+dt = DecisionTreeRegressor()
 
-random_forest_result = pd.concat([y_pred, y_test], axis = 1)
 
-# Evaluating the Model Performance
-
-r2_multiple_linear_regression = r2_score(y_test, y_pred)
-```
-
-[Implement, prediction and evaluation of Decision Tree Regression:]{.underline}
-
-``` python
-## Decision Tree Regression model
-regressor = DecisionTreeRegressor(random_state = 0)
-regressor.fit(X_train, y_train)
-
-# Predicting the Test set results
-
-y_pred = pd.DataFrame(regressor.predict(X_test), columns= ['y_pred'])
-
-y_test.index = y_pred.index
-
-random_forest_result = pd.concat([y_pred, y_test], axis = 1)
-
-# Evaluating the Model Performance
-
-r2_decision_tree_regression = r2_score(y_test, y_pred)
-```
-
-[Implement, prediction and evaluation of Linear Regression:]{.underline}
-
-``` python
-def flatten(l):
-    return [item for sublist in l for item in sublist]
-# Set up and fit the linear regressor
-lin_reg = LinearRegression()
-lin_reg.fit(X_train, y_train)
-
-# Flatten the prediction and expected lists
-predicted = flatten(lin_reg.predict(X_test))
-expected = flatten(y_test.values)
-
-import plotly.express as px
-
-# Put data to plot in dataframe
-df_plot = pd.DataFrame({'expected':expected, 'predicted':predicted})
-
-# Make scatter plot from data
-fig = px.scatter(
-    df_plot, 
-    x='expected', 
-    y='predicted',
-    title='Predicted vs. Actual Values')
-
-# Add straight line indicating perfect model
-fig.add_shape(type="line",
-    x0=30, y0=30, x1=90, y1=90,
-    line=dict(
-        color="Red",
-        width=4,
-        dash="dot",
-    )
+dt_random = RandomizedSearchCV(
+    estimator=dt,
+    param_distributions=random_grid,
+    n_iter=100,
+    cv=3,
+    verbose=2,
+    random_state=42,
+    n_jobs=-1
 )
 
-# Show figure
-fig.show()
-error = np.sqrt(np.mean((np.array(predicted) - np.array(expected)) ** 2))
-print(f"RMS: {error:.4f} ")
+dt_random.fit(X_train, y_train)
 
-r2=r2_score(expected, predicted)
-print(f"R2: {round(r2,4)}") 
+
+print("Best parameters:", dt_random.best_params_)
+
+
+predict = dt_random.predict(X_test)
 ```
 
-[Comparison of model results:]{.underline}
+4- **XGBoost**
+
+[Importing and installing needed libraries:]{.underline}
 
 ``` python
-##Comparison of model results
-results = pd.DataFrame([[
-    r2_random_forest,
-    r2_svm, 
-    r2_multiple_linear_regression,
-    r2_decision_tree_regression,
-r2]], columns = ['RandomForest', 'SVM', 'Multiplelinear', 'DecisionTree ', ' LinearRegresion'])
-
-ax = sns.barplot(results, width = 0.5)
-ax.set(xlabel='Model', ylabel='R2 Score')
-plt.ylim(0.9, 1)
+!pip install xgboost
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import r2_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from xgboost import XGBRegressor
+from sklearn.model_selection import RandomizedSearchCV
+from pprint import pprint
 ```
 
-As you can see, our models have a good prediction (R_square close to 1)
-
-![](images/Results.JPG)
-
-![](images/comparison.JPG)
-
-![](images/predicted%20vs%20expected%20data.JPG)
-
-All codes:
+[Loading dataset:]{.underline}
 
 ``` python
-## Importing the libraries
+data = pd.read_csv("heatml.csv")
+```
+
+[Encoding:]{.underline}
+
+``` python
+column = data.columns.to_list()
+data.columns = [a.strip() for a in column]
+
+fluid_dummy = pd.get_dummies(data['Fluid'], drop_first=True)
+
+data.drop(['Fluid', 'SAT'], inplace=True, axis=1)
+```
+
+[Correlation matrix:]{.underline}
+
+``` python
+corr_data = data.copy()
+correlation_matrix = corr_data.corr()
+
+plt.figure(figsize=(16,12))
+sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
+plt.show()
+```
+
+[Randomly splitting the dataset into training and testing subsets]{.underline}
+
+``` python
+Y = pd.DataFrame(data['Nu'], columns=['Nu'])
+data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
+
+
+X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size=0.2, random_state=0)
+y_test.columns = ['y_test']
+```
+
+Model definition, Hyperparameters tuning and Prediction
+
+``` python
+xg_reg = XGBRegressor(random_state=42)
+
+
+param_dist = {
+    'n_estimators': [int(x) for x in np.linspace(start=200, stop=2000, num=10)],
+    'max_depth': [int(x) for x in np.linspace(3, 15, num=13)],
+    'learning_rate': [0.001, 0.01, 0.1, 0.2, 0.3],
+    'subsample': [0.5, 0.7, 1.0],
+    'colsample_bytree': [0.5, 0.7, 1.0],
+    'gamma': [0, 0.1, 0.2, 0.3],
+    'min_child_weight': [1, 5, 10]
+}
+
+
+pprint(param_dist)
+
+
+random_search = RandomizedSearchCV(estimator=xg_reg, param_distributions=param_dist, n_iter=100, 
+                                   cv=3, verbose=2, random_state=42, n_jobs=-1)
+
+
+random_search.fit(X_train, y_train)
+
+
+print("Best hyperparameters found: ", random_search.best_params_)
+
+
+predict = random_search.predict(X_test)
+```
+
+5- **LightGBM**
+
+[Importing and installing needed libraries:]{.underline}
+
+``` python
+!pip install lightgbm
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import r2_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+import lightgbm as lgb
+from sklearn.model_selection import RandomizedSearchCV
+from pprint import pprint
+```
+
+[Loading dataset:]{.underline}
+
+``` python
+data = pd.read_csv("heatml.csv")
+```
+
+[Encoding:]{.underline}
+
+``` python
+
+column = data.columns.to_list()
+data.columns = [a.strip() for a in column]
+
+
+fluid_dummy = pd.get_dummies(data['Fluid'], drop_first=True)
+
+data.drop(['Fluid', 'SAT'], inplace=True, axis=1)
+```
+
+[Correlation matrix:]{.underline}
+
+``` python
+
+corr_data = data.copy()
+correlation_matrix = corr_data.corr()
+
+plt.figure(figsize=(16,12))
+sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
+plt.show()
+```
+
+[Randomly splitting the dataset into training and testing subsets]{.underline}
+
+``` python
+
+Y = pd.DataFrame(data['Nu'], columns=['Nu'])
+data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
+
+
+X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size=0.2, random_state=0)
+y_test.columns = ['y_test']
+```
+
+Model definition, Hyperparameters tuning and Prediction
+
+``` python
+
+lgb_reg = lgb.LGBMRegressor(random_state=42)
+
+
+param_dist = {
+    'n_estimators': [int(x) for x in np.linspace(start=200, stop=2000, num=10)],
+    'max_depth': [int(x) for x in np.linspace(3, 15, num=13)],
+    'learning_rate': [0.001, 0.01, 0.1, 0.2, 0.3],
+    'subsample': [0.5, 0.7, 1.0],
+    'colsample_bytree': [0.5, 0.7, 1.0],
+    'min_child_samples': [5, 10, 20],
+    'reg_alpha': [0, 0.1, 0.2, 0.3],
+    'reg_lambda': [0, 0.1, 0.2, 0.3]
+}
+
+
+pprint(param_dist)
+
+
+random_search = RandomizedSearchCV(estimator=lgb_reg, param_distributions=param_dist, n_iter=100,
+                                   cv=3, verbose=2, random_state=42, n_jobs=-1)
+
+
+random_search.fit(X_train, y_train)
+
+
+print("Best hyperparameters found: ", random_search.best_params_)
+
+
+predict = random_search.predict(X_test)
+```
+
+\
+**Prediction on Gas Atomizer Sprays**
+
+1- **RFR**
+
+``` python
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -251,185 +544,294 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.svm import SVR
-
-## Importing the dataset
-
-data = pd.read_csv("Life Expectancy Data.csv")
+from sklearn.metrics import r2_score
 
 
-## Correcting column names
+data = pd.read_csv("heatml-gas.csv")
 
 column = data.columns.to_list()
 
 
 data.columns = [a.strip() for a in column]
 
-## Taking care of missing data
-imputer = SimpleImputer(missing_values=np.nan, strategy="median")
-data['Life expectancy'] = imputer.fit_transform(data[['Life expectancy']])
-data['Adult Mortality'] = imputer.fit_transform(data[['Adult Mortality']])
-data['Alcohol'] = imputer.fit_transform(data[['Alcohol']])
-data['Hepatitis B'] = imputer.fit_transform(data[['Hepatitis B']])
-data['BMI'] = imputer.fit_transform(data[['BMI']])
-data['Polio'] = imputer.fit_transform(data[['Polio']])
-data['Total expenditure'] = imputer.fit_transform(data[['Total expenditure']])
-data['Diphtheria'] = imputer.fit_transform(data[['Diphtheria']])
-data['GDP'] = imputer.fit_transform(data[['GDP']])
-data['Population'] = imputer.fit_transform(data[['Population']])
-data['thinness  1-19 years'] = imputer.fit_transform(data[['thinness  1-19 years']])
-data['thinness 5-9 years'] = imputer.fit_transform(data[['thinness 5-9 years']])
-data['Income composition of resources'] = imputer.fit_transform(data[['Income composition of resources']])
-data['Schooling'] = imputer.fit_transform(data[['Schooling']])
 
-## Encoding of dependent variables
-country_dummy = pd.get_dummies(data['Country'], drop_first = True)
-status_dummy = pd.get_dummies(data['Status'], drop_first = True)
+fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
 
-data.drop(['Country', 'Status'], inplace = True, axis = 1)
+
+data.drop(['Fluid', 'SAT'], inplace = True, axis = 1)
 
 corr_data = data.copy()
 
-## Correlation matrix
-##correlation_matrix = corr_data.corr()
 
-##plt.figure(figsize=(16,12))
-##sns.heatmap(correlation_matrix, annot=True,fmt=".2f", cmap="Greens")
-##plt.show()
+correlation_matrix = corr_data.corr()
 
-## Splitting the dataset into the Training set and Test set
-Y = pd.DataFrame(data['Life expectancy'], columns = ['Life expectancy'])
-data.drop(['Life expectancy'], inplace = True, axis = 1)
+plt.figure(figsize=(16,12))
+sns.heatmap(correlation_matrix, annot=True,fmt=".2f", cmap="Greens")
+plt.show()
 
-all_data = pd.concat([data, country_dummy, status_dummy], axis = 1)
 
-X_train, X_test, y_train, y_test = train_test_split(all_data, Y, test_size = 0.2, random_state = 0)
+Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
+data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+
+
+X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size = 0.2, random_state = 0)
 
 y_test.columns = ['y_test']
 
-## Random Forest Regression model
-regressor = RandomForestRegressor(n_estimators = 10, random_state = 0)
-regressor.fit(X_train, y_train.values.ravel())
+from sklearn.ensemble import RandomForestRegressor
+rf = RandomForestRegressor(random_state = 42)
+from pprint import pprint
 
-#Predicting the Test set results
-y_pred = pd.DataFrame(regressor.predict(X_test), columns= ['y_pred'])
-
-y_test.index = y_pred.index
-
-random_forest_result = pd.concat([y_pred, y_test], axis = 1)
+pprint(rf.get_params())
 
 
-# Evaluating the Model Performance
-r2_random_forest = r2_score(y_test, y_pred)
+from sklearn.model_selection import RandomizedSearchCV
 
+n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
 
-##Support Vector Regression (SVR) model
-# Feature scaling
-sc_X = StandardScaler()
-sc_y = StandardScaler()
-X_train_scaled = sc_X.fit_transform(X_train)
-y_train_scaled = sc_y.fit_transform(y_train)
+max_features = ['auto', 'sqrt']
 
-regressor = SVR(kernel = 'rbf')
-regressor.fit(X_train_scaled, y_train_scaled.ravel())
+max_depth = [int(x) for x in np.linspace(10, 110, num = 11)]
+max_depth.append(None)
 
-##Predicting the Test set results
-y_pred = regressor.predict(sc_X.transform(X_test))
-y_pred = pd.DataFrame(sc_y.inverse_transform(pd.DataFrame(y_pred)), columns= ['y_pred'])
+min_samples_split = [2, 5, 10]
 
-y_test.index = y_pred.index
+min_samples_leaf = [1, 2, 4]
 
-svr_result = pd.concat([y_pred, y_test], axis = 1)
-
-# Evaluating the Model Performance
-
-r2_svm = r2_score(y_test, y_pred)
-
-##Multiple Linear Regression model
-regressor = LinearRegression()
-regressor.fit(X_train, y_train)
-
-# Predicting the Test set results
-
-y_pred = pd.DataFrame(regressor.predict(X_test), columns= ['y_pred'])
-
-y_test.index = y_pred.index
-
-random_forest_result = pd.concat([y_pred, y_test], axis = 1)
-
-# Evaluating the Model Performance
-
-r2_multiple_linear_regression = r2_score(y_test, y_pred)
-
-## Decision Tree Regression model
-regressor = DecisionTreeRegressor(random_state = 0)
-regressor.fit(X_train, y_train)
-
-# Predicting the Test set results
-
-y_pred = pd.DataFrame(regressor.predict(X_test), columns= ['y_pred'])
-
-y_test.index = y_pred.index
-
-random_forest_result = pd.concat([y_pred, y_test], axis = 1)
-
-# Evaluating the Model Performance
-
-r2_decision_tree_regression = r2_score(y_test, y_pred)
-
-##Comparison of model results
-results = pd.DataFrame([[
-    r2_random_forest,
-    r2_svm, 
-    r2_multiple_linear_regression,
-    r2_decision_tree_regression,
-r2]], columns = ['RandomForest', 'SVM', 'Multiplelinear', 'DecisionTree ', ' LinearRegresion'])
-
-ax = sns.barplot(results, width = 0.5)
-ax.set(xlabel='Model', ylabel='R2 Score')
-plt.ylim(0.9, 1)
+bootstrap = [True, False]
+random_grid = {'n_estimators': n_estimators,
+               'max_features': max_features,
+               'max_depth': max_depth,
+               'min_samples_split': min_samples_split,
+               'min_samples_leaf': min_samples_leaf,
+               'bootstrap': bootstrap}
+pprint(random_grid)
 
 
 
+rf = RandomForestRegressor()
+
+rf_random = RandomizedSearchCV(estimator = rf, param_distributions = random_grid, n_iter = 100, cv = 3, verbose=2, random_state=42, n_jobs = -1)
+
+rf_random.fit(X_train, y_train)
+
+rf_random.best_params_
 
 
-## me
-def flatten(l):
-    return [item for sublist in l for item in sublist]
-# Set up and fit the linear regressor
-lin_reg = LinearRegression()
-lin_reg.fit(X_train, y_train)
+predict = rf_random.predict(X_test)
 
-# Flatten the prediction and expected lists
-predicted = flatten(lin_reg.predict(X_test))
-expected = flatten(y_test.values)
 
-import plotly.express as px
 
-# Put data to plot in dataframe
-df_plot = pd.DataFrame({'expected':expected, 'predicted':predicted})
+yt = y_test.to_numpy()
 
-# Make scatter plot from data
-fig = px.scatter(
-    df_plot, 
-    x='expected', 
-    y='predicted',
-    title='Predicted vs. Actual Values')
 
-# Add straight line indicating perfect model
-fig.add_shape(type="line",
-    x0=30, y0=30, x1=90, y1=90,
-    line=dict(
-        color="Red",
-        width=4,
-        dash="dot",
-    )
+predict.reshape(6,1)
+
+rfr_result = pd.concat([pd.DataFrame(predict), pd.DataFrame(yt)], axis = 1)
+
+rfr_result.to_csv('rfrnuht.csv')
+```
+
+2- **SVR**
+
+``` python
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import r2_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVR
+from sklearn.model_selection import RandomizedSearchCV
+from pprint import pprint
+
+
+data = pd.read_csv("heatml-gas.csv")
+
+column = data.columns.to_list()
+data.columns = [a.strip() for a in column]
+
+
+fluid_dummy = pd.get_dummies(data['Fluid'], drop_first=True)
+data.drop(['Fluid', 'SAT'], inplace=True, axis=1)
+
+corr_data = data.copy()
+
+
+correlation_matrix = corr_data.corr()
+plt.figure(figsize=(16, 12))
+sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
+plt.show()
+
+Y = pd.DataFrame(data['Nu'], columns=['Nu'])
+data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
+
+
+X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size=0.2, random_state=0)
+y_test.columns = ['y_test']
+
+
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+
+svm = SVR()
+
+
+print('Parameters currently in use:\n')
+pprint(svm.get_params())
+
+
+C = [0.01, 0.1, 1, 10, 100, 1000]
+epsilon = [0.01, 0.05, 0.1, 0.2, 0.5]
+kernel = ['rbf', 'poly', 'sigmoid']
+gamma = ['scale', 'auto', 0.001, 0.01, 0.1]
+
+
+random_grid = {
+    'C': C,
+    'epsilon': epsilon,
+    'kernel': kernel,
+    'gamma': gamma
+}
+pprint(random_grid)
+
+
+svm = SVR()
+
+
+svm_random = RandomizedSearchCV(
+    estimator=svm,
+    param_distributions=random_grid,
+    n_iter=100,
+    cv=5,  
+    verbose=2,
+    random_state=42,
+    n_jobs=-1
 )
 
-# Show figure
-fig.show()
-error = np.sqrt(np.mean((np.array(predicted) - np.array(expected)) ** 2))
-print(f"RMS: {error:.4f} ")
 
-r2=r2_score(expected, predicted)
-print(f"R2: {round(r2,4)}") 
+svm_random.fit(X_train, y_train)
+
+
+print("Best parameters:", svm_random.best_params_)
+
+
+predict = svm_random.predict(X_test)
+
+
+yt = y_test.to_numpy()
+
+
+predict = predict.reshape(-1, 1)
+
+
+svm_result = pd.concat([pd.DataFrame(predict), pd.DataFrame(yt)], axis=1)
+svm_result.to_csv('svmnuhtgas_svm.csv')
+```
+
+3- **DT**
+
+``` python
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import r2_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.model_selection import RandomizedSearchCV
+from pprint import pprint
+
+
+data = pd.read_csv("heatml-gas.csv")
+
+column = data.columns.to_list()
+data.columns = [a.strip() for a in column]
+
+
+fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
+data.drop(['Fluid', 'SAT'], inplace = True, axis = 1)
+
+corr_data = data.copy()
+
+correlation_matrix = corr_data.corr()
+plt.figure(figsize=(16,12))
+sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
+plt.show()
+
+Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
+data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+
+X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size = 0.2, random_state = 0)
+y_test.columns = ['y_test']
+
+
+dt = DecisionTreeRegressor(random_state=42)
+
+
+
+
+max_depth = [int(x) for x in np.linspace(10, 110, num=11)]
+max_depth.append(None)
+
+
+min_samples_split = [2, 5, 10]
+
+
+min_samples_leaf = [1, 2, 4]
+
+
+max_features = ['auto', 'sqrt', None]
+
+
+criterion = ['mse', 'friedman_mse', 'mae']
+
+
+random_grid = {
+    'max_depth': max_depth,
+    'min_samples_split': min_samples_split,
+    'min_samples_leaf': min_samples_leaf,
+    'max_features': max_features,
+    'criterion': criterion
+}
+pprint(random_grid)
+
+
+dt = DecisionTreeRegressor()
+
+
+dt_random = RandomizedSearchCV(
+    estimator=dt,
+    param_distributions=random_grid,
+    n_iter=100,
+    cv=3,
+    verbose=2,
+    random_state=42,
+    n_jobs=-1
+)
+
+
+dt_random.fit(X_train, y_train)
+
+
+print("Best parameters:", dt_random.best_params_)
+
+
+predict = dt_random.predict(X_test)
+
+
+yt = y_test.to_numpy()
+
+
+predict = predict.reshape(-1, 1)
+
+
+dt_result = pd.concat([pd.DataFrame(predict), pd.DataFrame(yt)], axis=1)
+dt_result.to_csv('dtnuht_decision_tree.csv')
 ```
