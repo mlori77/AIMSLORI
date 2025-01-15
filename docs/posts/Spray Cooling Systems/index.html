@@ -145,7 +145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="quarto-title column-body">
       <h1 class="title">Spray Cooling Prediction by ML and DL</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">Regression</div>
+                <div class="quarto-category">Paper</div>
               </div>
                   </div>
   </div>
@@ -182,79 +182,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>In this post, we use some regression machine learning methods on a dataset and make a comparison of outcomes for different methods.&nbsp; The applying methods are 1- <strong>Random Forest Regression</strong> 2- <strong>Support Vector Regression (SVR)</strong> 3- <strong>Multiple Linear Regression</strong> and 4- <strong>Linear Regression</strong></p>
-<p>1- <strong>Random Forest Regression</strong> is a supervised learning algorithm and bagging technique within machine learning that utilizes an ensemble learning method for regression. The trees in Random Forests run in parallel, implying no interaction between these trees during their construction.</p>
-<p>Random Forest Regression is a supervised learning algorithm employing an ensemble learning approach for regression.</p>
-<p>It’s important to note that Random Forest is a bagging technique rather than a boosting technique. The trees in Random Forests operate in parallel, indicating that there is no interaction between these trees during the tree-building process.</p>
-<p><img src="images/Randon Forest Regression.JPG" class="img-fluid"></p>
-<p>2- <strong>Support Vector Regression (SVR):</strong> Support Vector Regression (SVR) represents a machine learning algorithm employed in regression analysis. Its objective is to identify a function that estimates the connection between input variables and a continuous target variable, with a focus on minimizing prediction errors.</p>
-<p>In contrast to Support Vector Machines (SVMs) utilized for classification purposes, SVR aims to locate a hyperplane that optimally accommodates data points in a continuous space. This involves mapping input variables to a high-dimensional feature space and determining the hyperplane that maximizes the margin (distance) from the hyperplane to the nearest data points, all while minimizing prediction errors.</p>
-<p>SVR exhibits the capability to address non-linear associations between input variables and the target variable through the incorporation of a kernel function, facilitating the mapping of data to a higher-dimensional space. This characteristic renders SVR particularly potent for regression tasks characterized by intricate relationships between input variables and the target variable.</p>
-<p><em>Hyperparameters of the Support Vector Regression (SVR) and Support Vector Machine (SVM) Algorithms</em>:</p>
-<ul>
-<li><p><em>Kernel</em>: Utilizing a kernel aids in identifying a hyperplane within a higher-dimensional space without escalating the computational cost. Typically, the computational cost rises as the dimension of the data increases. This escalation in dimensionality becomes necessary when a separating hyperplane cannot be found within the given dimension, compelling the need to transition to a higher-dimensional space.</p></li>
-<li><p><em>Hyperplane:</em>In SVM, this essentially represents a demarcating line between two classes of data. However, in Support Vector Regression, this line serves as the basis for predicting continuous output values.</p></li>
-<li><p><em>Decision Boundary:</em> A decision boundary can be conceptualized as a demarcation line (for simplicity), with positive examples on one side and negative examples on the other. Along this line, examples may be classified as either positive or negative. This identical concept from SVM is also employed in Support Vector Regression.</p></li>
-</ul>
-<p>There are many hyperplanes to separate the data, but in SVR, we look for a hyperplane with the maximum margin (distance) between two classes. So we choose the hyperplane so that the distance from it to the nearest data point on each side is maximized. (for support vector machine)</p>
-<p>Envision the two blue lines as the decision boundary, with the green line serving as the hyperplane. In the context of SVR, our aim is primarily focused on the points situated within the decision boundary line. The optimal fit line corresponds to the hyperplane that encompasses the maximum number of points.</p>
-<p><img src="images/SVR-me.jpg" class="img-fluid"></p>
-<p>3&amp;4- <strong>Multiple Linear Regression</strong> and <strong>Linear Regression:</strong> Linear regression referred to as simple regression, linear regression establishes a connection between two variables. Graphically, linear regression is represented by a straight line, where the slope defines how changes in one variable influence changes in the other. The y-intercept in a linear regression relationship signifies the value of one variable when the other variable is 0. In instances of intricate connections within data, the relationship may be elucidated by more than a single variable. In such cases, analysts employ multiple regression, a technique aimed at elucidating a dependent variable by considering multiple independent variables.</p>
-<p>After getting familiarized with different machine learning regression model, we will start to use those models on real life data.</p>
-<p><u>Importing our needed libraries:</u></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Importing the libraries</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVR</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><u>Fixing column names:</u></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Importing the dataset</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"Life Expectancy Data.csv"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">## Correcting column names</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>column <span class="op">=</span> data.columns.to_list()</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>data.columns <span class="op">=</span> [a.strip() <span class="cf">for</span> a <span class="kw">in</span> column]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><em>Strip ()</em>: Remove spaces at the beginning and at the end of the string</p>
-<p><u>Handling missing data:</u></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Taking care of missing data</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>imputer <span class="op">=</span> SimpleImputer(missing_values<span class="op">=</span>np.nan, strategy<span class="op">=</span><span class="st">"median"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Life expectancy'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'Life expectancy'</span>]])</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Adult Mortality'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'Adult Mortality'</span>]])</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Alcohol'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'Alcohol'</span>]])</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Hepatitis B'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'Hepatitis B'</span>]])</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'BMI'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'BMI'</span>]])</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Polio'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'Polio'</span>]])</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Total expenditure'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'Total expenditure'</span>]])</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Diphtheria'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'Diphtheria'</span>]])</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'GDP'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'GDP'</span>]])</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Population'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'Population'</span>]])</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'thinness  1-19 years'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'thinness  1-19 years'</span>]])</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'thinness 5-9 years'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'thinness 5-9 years'</span>]])</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Income composition of resources'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'Income composition of resources'</span>]])</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>data[<span class="st">'Schooling'</span>] <span class="op">=</span> imputer.fit_transform(data[[<span class="st">'Schooling'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><em>Sklearn_impute_SimpleImputer</em>: Utilizing a univariate imputer to fill in missing values through straightforward strategies. This involves replacing missing values within each column using a descriptive statistic like mean, median, or the most frequent value, or alternatively, using a constant value.</p>
-<p><u>Encoding of dependent variables:</u></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Encoding of dependent variables</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>country_dummy <span class="op">=</span> pd.get_dummies(data[<span class="st">'Country'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>status_dummy <span class="op">=</span> pd.get_dummies(data[<span class="st">'Status'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span>
+<p>In this post, we have applied some ML and DL algotihms on a dataset compiled from previous studies in the literature about spray cooling systems. The target variable is Nusselt number (Nu). The applying methods are 1- <strong>Random Forest Regression (RFR)</strong> 2- <strong>Support Vector Regression (SVR)</strong> 3- <strong>Decision Tree Regression (DTR)</strong> 4- <strong>XGBoost</strong> 5- <strong>LightGBM</strong> and 6- <strong>Multilayer Perception (MLP)</strong></p>
+<p>1- <strong>Random Forest Regression</strong></p>
+<p><u>Importing needed libraries:</u></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVR</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><u>Loading dataset:</u></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/mlori77/ANN/main/heatml.csv'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><u>Encoding:</u></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data.columns <span class="op">=</span> [a.strip() <span class="cf">for</span> a <span class="kw">in</span> column]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>fluid_dummy <span class="op">=</span> pd.get_dummies(data[<span class="st">'Fluid'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><u>Correlation matrix:</u></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>corr_data <span class="op">=</span> data.copy()</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'Country'</span>, <span class="st">'Status'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> corr_data.corr()</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>corr_data <span class="op">=</span> data.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>,<span class="dv">12</span>))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>,fmt<span class="op">=</span><span class="st">".2f"</span>, cmap<span class="op">=</span><span class="st">"Greens"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>get_dummies</em>: Convert categorical variable into dummy/indicator variables.&nbsp; Each variable is converted in as many 0/1 variables as there are different values. Columns in the output are each named after a value; if the input is a DataFrame, the name of the original variable is prepended to the value</p>
 <p><em>A correlation matrix</em> is a statistical tool employed to assess the relationship between two variables within a dataset. Represented as a table, each cell in the matrix contains a correlation coefficient. A coefficient of 1 signifies a strong positive relationship between variables, 0 indicates a neutral relationship, and -1 suggests a strong negative relationship.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Correlation matrix</span></span>

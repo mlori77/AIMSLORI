@@ -6,44 +6,13 @@ categories: [Paper]
 image: "mtheme.jpg"
 ---
 
-In this post, we use some regression machine learning methods on a dataset and make a comparison of outcomes for different methods.  The applying methods are 1- **Random Forest Regression** 2- **Support Vector Regression (SVR)** 3- **Multiple Linear Regression** and 4- **Linear Regression**
+In this post, we have applied some ML and DL algotihms on a dataset compiled from previous studies in the literature about spray cooling systems. The target variable is Nusselt number (Nu). The applying methods are 1- **Random Forest Regression (RFR)** 2- **Support Vector Regression (SVR)** 3- **Decision Tree Regression (DTR)** 4- **XGBoost** 5- **LightGBM** and 6- **Multilayer Perception (MLP)**
 
-1- **Random Forest Regression** is a supervised learning algorithm and bagging technique within machine learning that utilizes an ensemble learning method for regression. The trees in Random Forests run in parallel, implying no interaction between these trees during their construction.
+1- **Random Forest Regression**
 
-Random Forest Regression is a supervised learning algorithm employing an ensemble learning approach for regression.
-
-It's important to note that Random Forest is a bagging technique rather than a boosting technique. The trees in Random Forests operate in parallel, indicating that there is no interaction between these trees during the tree-building process.
-
-![](images/Randon%20Forest%20Regression.JPG)
-
-2- **Support Vector Regression (SVR):** Support Vector Regression (SVR) represents a machine learning algorithm employed in regression analysis. Its objective is to identify a function that estimates the connection between input variables and a continuous target variable, with a focus on minimizing prediction errors.
-
-In contrast to Support Vector Machines (SVMs) utilized for classification purposes, SVR aims to locate a hyperplane that optimally accommodates data points in a continuous space. This involves mapping input variables to a high-dimensional feature space and determining the hyperplane that maximizes the margin (distance) from the hyperplane to the nearest data points, all while minimizing prediction errors.
-
-SVR exhibits the capability to address non-linear associations between input variables and the target variable through the incorporation of a kernel function, facilitating the mapping of data to a higher-dimensional space. This characteristic renders SVR particularly potent for regression tasks characterized by intricate relationships between input variables and the target variable.
-
-*Hyperparameters of the Support Vector Regression (SVR) and Support Vector Machine (SVM) Algorithms*:
-
--   *Kernel*: Utilizing a kernel aids in identifying a hyperplane within a higher-dimensional space without escalating the computational cost. Typically, the computational cost rises as the dimension of the data increases. This escalation in dimensionality becomes necessary when a separating hyperplane cannot be found within the given dimension, compelling the need to transition to a higher-dimensional space.
-
--   *Hyperplane:*In SVM, this essentially represents a demarcating line between two classes of data. However, in Support Vector Regression, this line serves as the basis for predicting continuous output values.
-
--   *Decision Boundary:* A decision boundary can be conceptualized as a demarcation line (for simplicity), with positive examples on one side and negative examples on the other. Along this line, examples may be classified as either positive or negative. This identical concept from SVM is also employed in Support Vector Regression.
-
-There are many hyperplanes to separate the data, but in SVR, we look for a hyperplane with the maximum margin (distance) between two classes. So we choose the hyperplane so that the distance from it to the nearest data point on each side is maximized. (for support vector machine)
-
-Envision the two blue lines as the decision boundary, with the green line serving as the hyperplane. In the context of SVR, our aim is primarily focused on the points situated within the decision boundary line. The optimal fit line corresponds to the hyperplane that encompasses the maximum number of points.
-
-![](images/SVR-me.jpg)
-
-3&4- **Multiple Linear Regression** and **Linear Regression:** Linear regression referred to as simple regression, linear regression establishes a connection between two variables. Graphically, linear regression is represented by a straight line, where the slope defines how changes in one variable influence changes in the other. The y-intercept in a linear regression relationship signifies the value of one variable when the other variable is 0. In instances of intricate connections within data, the relationship may be elucidated by more than a single variable. In such cases, analysts employ multiple regression, a technique aimed at elucidating a dependent variable by considering multiple independent variables.
-
-After getting familiarized with different machine learning regression model, we will start to use those models on real life data.
-
-[Importing our needed libraries:]{.underline}
+[Importing needed libraries:]{.underline}
 
 ``` python
-## Importing the libraries
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -57,67 +26,31 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.svm import SVR
+from sklearn.metrics import r2_score
 ```
 
-[Fixing column names:]{.underline}
+[Loading dataset:]{.underline}
 
 ``` python
-## Importing the dataset
+url = 'https://raw.githubusercontent.com/mlori77/ANN/main/heatml.csv'
+data = pd.read_csv(url)
+```
 
-data = pd.read_csv("Life Expectancy Data.csv")
+[Encoding:]{.underline}
 
-
-## Correcting column names
-
-column = data.columns.to_list()
-
-
+``` python
 data.columns = [a.strip() for a in column]
+
+fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
 ```
 
-*Strip ()*: Remove spaces at the beginning and at the end of the string
-
-[Handling missing data:]{.underline}
+[Correlation matrix:]{.underline}
 
 ``` python
-## Taking care of missing data
-imputer = SimpleImputer(missing_values=np.nan, strategy="median")
-data['Life expectancy'] = imputer.fit_transform(data[['Life expectancy']])
-data['Adult Mortality'] = imputer.fit_transform(data[['Adult Mortality']])
-data['Alcohol'] = imputer.fit_transform(data[['Alcohol']])
-data['Hepatitis B'] = imputer.fit_transform(data[['Hepatitis B']])
-data['BMI'] = imputer.fit_transform(data[['BMI']])
-data['Polio'] = imputer.fit_transform(data[['Polio']])
-data['Total expenditure'] = imputer.fit_transform(data[['Total expenditure']])
-data['Diphtheria'] = imputer.fit_transform(data[['Diphtheria']])
-data['GDP'] = imputer.fit_transform(data[['GDP']])
-data['Population'] = imputer.fit_transform(data[['Population']])
-data['thinness  1-19 years'] = imputer.fit_transform(data[['thinness  1-19 years']])
-data['thinness 5-9 years'] = imputer.fit_transform(data[['thinness 5-9 years']])
-data['Income composition of resources'] = imputer.fit_transform(data[['Income composition of resources']])
-data['Schooling'] = imputer.fit_transform(data[['Schooling']])
-```
-
-*Sklearn_impute_SimpleImputer*: Utilizing a univariate imputer to fill in missing values through straightforward strategies. This involves replacing missing values within each column using a descriptive statistic like mean, median, or the most frequent value, or alternatively, using a constant value.
-
-[Encoding of dependent variables:]{.underline}
-
-``` python
-## Encoding of dependent variables
-country_dummy = pd.get_dummies(data['Country'], drop_first = True)
-status_dummy = pd.get_dummies(data['Status'], drop_first = True)
-
-data.drop(['Country', 'Status'], inplace = True, axis = 1)
+data.drop(['Fluid', 'SAT'], inplace = True, axis = 1)
 
 corr_data = data.copy()
-```
 
-*get_dummies*: Convert categorical variable into dummy/indicator variables.  Each variable is converted in as many 0/1 variables as there are different values. Columns in the output are each named after a value; if the input is a DataFrame, the name of the original variable is prepended to the value
-
-*A correlation matrix* is a statistical tool employed to assess the relationship between two variables within a dataset. Represented as a table, each cell in the matrix contains a correlation coefficient. A coefficient of 1 signifies a strong positive relationship between variables, 0 indicates a neutral relationship, and -1 suggests a strong negative relationship.
-
-``` python
-## Correlation matrix
 correlation_matrix = corr_data.corr()
 
 plt.figure(figsize=(16,12))
@@ -125,11 +58,16 @@ sns.heatmap(correlation_matrix, annot=True,fmt=".2f", cmap="Greens")
 plt.show()
 ```
 
-Here we have the correlation matrix for our data:
+[Randomly splitting the dataset into training and testing subsets]{.underline}
 
-![](images/correlationmatrix.png)
+``` python
+Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
+data.drop(['P', 'um', 'Pr', 'k', 'Nu'], inplace = True, axis = 1)
 
-[Split arrays or matrices into random train and test subsets with test size of 20%:]{.underline}
+X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size = 0.2, random_state = 0)
+
+y_test.columns = ['y_test']
+```
 
 ``` python
 ## Splitting the dataset into the Training set and Test set
