@@ -252,7 +252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>               <span class="st">'min_samples_split'</span>: min_samples_split,</span>
 <span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>               <span class="st">'min_samples_leaf'</span>: min_samples_leaf,</span>
 <span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>               <span class="st">'bootstrap'</span>: bootstrap}</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>pprint(random_grid)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
@@ -346,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>svm_random.fit(X_train, y_train)</span>
 <span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best parameters:"</span>, svm_random.best_params_)</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>svm_random.best_params_</span>
 <span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> svm_random.predict(X_test)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -413,7 +413,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_features'</span>: max_features,</span>
 <span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">'criterion'</span>: criterion</span>
 <span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>pprint(random_grid)</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a></span>
@@ -433,7 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a>dt_random.fit(X_train, y_train)</span>
 <span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best parameters:"</span>, dt_random.best_params_)</span>
+<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a>dt_random.best_params_</span>
 <span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> dt_random.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -499,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>random_search.fit(X_train, y_train)</span>
 <span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best hyperparameters found: "</span>, random_search.best_params_)</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>random_search.best_params_</span>
 <span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> random_search.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -561,7 +561,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>pprint(param_dist)</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>random_search <span class="op">=</span> RandomizedSearchCV(estimator<span class="op">=</span>lgb_reg, param_distributions<span class="op">=</span>param_dist, n_iter<span class="op">=</span><span class="dv">100</span>,</span>
@@ -571,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>random_search.fit(X_train, y_train)</span>
 <span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best hyperparameters found: "</span>, random_search.best_params_)</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>random_search.best_params_</span>
 <span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> random_search.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -652,7 +652,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb31-72"><a href="#cb31-72" aria-hidden="true" tabindex="-1"></a>               <span class="st">'min_samples_split'</span>: min_samples_split,</span>
 <span id="cb31-73"><a href="#cb31-73" aria-hidden="true" tabindex="-1"></a>               <span class="st">'min_samples_leaf'</span>: min_samples_leaf,</span>
 <span id="cb31-74"><a href="#cb31-74" aria-hidden="true" tabindex="-1"></a>               <span class="st">'bootstrap'</span>: bootstrap}</span>
-<span id="cb31-75"><a href="#cb31-75" aria-hidden="true" tabindex="-1"></a>pprint(random_grid)</span>
+<span id="cb31-75"><a href="#cb31-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-76"><a href="#cb31-76" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-77"><a href="#cb31-77" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-78"><a href="#cb31-78" aria-hidden="true" tabindex="-1"></a></span>
@@ -760,7 +760,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb32-80"><a href="#cb32-80" aria-hidden="true" tabindex="-1"></a>svm_random.fit(X_train, y_train)</span>
 <span id="cb32-81"><a href="#cb32-81" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-82"><a href="#cb32-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-83"><a href="#cb32-83" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best parameters:"</span>, svm_random.best_params_)</span>
+<span id="cb32-83"><a href="#cb32-83" aria-hidden="true" tabindex="-1"></a>svm_random.best_params_</span>
 <span id="cb32-84"><a href="#cb32-84" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-85"><a href="#cb32-85" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-86"><a href="#cb32-86" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> svm_random.predict(X_test)</span>
@@ -839,7 +839,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb33-62"><a href="#cb33-62" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_features'</span>: max_features,</span>
 <span id="cb33-63"><a href="#cb33-63" aria-hidden="true" tabindex="-1"></a>    <span class="st">'criterion'</span>: criterion</span>
 <span id="cb33-64"><a href="#cb33-64" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb33-65"><a href="#cb33-65" aria-hidden="true" tabindex="-1"></a>pprint(random_grid)</span>
+<span id="cb33-65"><a href="#cb33-65" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-66"><a href="#cb33-66" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-67"><a href="#cb33-67" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeRegressor()</span>
@@ -859,7 +859,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb33-82"><a href="#cb33-82" aria-hidden="true" tabindex="-1"></a>dt_random.fit(X_train, y_train)</span>
 <span id="cb33-83"><a href="#cb33-83" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-84"><a href="#cb33-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-85"><a href="#cb33-85" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best parameters:"</span>, dt_random.best_params_)</span>
+<span id="cb33-85"><a href="#cb33-85" aria-hidden="true" tabindex="-1"></a>dt_random.best_params_</span>
 <span id="cb33-86"><a href="#cb33-86" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-87"><a href="#cb33-87" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-88"><a href="#cb33-88" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> dt_random.predict(X_test)</span>
@@ -940,7 +940,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb34-64"><a href="#cb34-64" aria-hidden="true" tabindex="-1"></a>random_search.fit(X_train, y_train)</span>
 <span id="cb34-65"><a href="#cb34-65" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-66"><a href="#cb34-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-67"><a href="#cb34-67" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best hyperparameters found: "</span>, random_search.best_params_)</span>
+<span id="cb34-67"><a href="#cb34-67" aria-hidden="true" tabindex="-1"></a>random_search.best_params_</span>
 <span id="cb34-68"><a href="#cb34-68" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-69"><a href="#cb34-69" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-70"><a href="#cb34-70" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> random_search.predict(X_test)</span>
@@ -1022,7 +1022,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb35-65"><a href="#cb35-65" aria-hidden="true" tabindex="-1"></a>random_search.fit(X_train, y_train)</span>
 <span id="cb35-66"><a href="#cb35-66" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-67"><a href="#cb35-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best hyperparameters found: "</span>, random_search.best_params_)</span>
+<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a>random_search.best_params_</span>
 <span id="cb35-69"><a href="#cb35-69" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-70"><a href="#cb35-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-71"><a href="#cb35-71" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> random_search.predict(X_test)</span>
@@ -1111,7 +1111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb36-72"><a href="#cb36-72" aria-hidden="true" tabindex="-1"></a>               <span class="st">'min_samples_split'</span>: min_samples_split,</span>
 <span id="cb36-73"><a href="#cb36-73" aria-hidden="true" tabindex="-1"></a>               <span class="st">'min_samples_leaf'</span>: min_samples_leaf,</span>
 <span id="cb36-74"><a href="#cb36-74" aria-hidden="true" tabindex="-1"></a>               <span class="st">'bootstrap'</span>: bootstrap}</span>
-<span id="cb36-75"><a href="#cb36-75" aria-hidden="true" tabindex="-1"></a>pprint(random_grid)</span>
+<span id="cb36-75"><a href="#cb36-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-76"><a href="#cb36-76" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-77"><a href="#cb36-77" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-78"><a href="#cb36-78" aria-hidden="true" tabindex="-1"></a></span>
@@ -1183,56 +1183,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb37-44"><a href="#cb37-44" aria-hidden="true" tabindex="-1"></a>svm <span class="op">=</span> SVR()</span>
 <span id="cb37-45"><a href="#cb37-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-46"><a href="#cb37-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-47"><a href="#cb37-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Parameters currently in use:</span><span class="ch">\n</span><span class="st">'</span>)</span>
-<span id="cb37-48"><a href="#cb37-48" aria-hidden="true" tabindex="-1"></a>pprint(svm.get_params())</span>
-<span id="cb37-49"><a href="#cb37-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-50"><a href="#cb37-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-51"><a href="#cb37-51" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> [<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>]</span>
-<span id="cb37-52"><a href="#cb37-52" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> [<span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.5</span>]</span>
-<span id="cb37-53"><a href="#cb37-53" aria-hidden="true" tabindex="-1"></a>kernel <span class="op">=</span> [<span class="st">'rbf'</span>, <span class="st">'poly'</span>, <span class="st">'sigmoid'</span>]</span>
-<span id="cb37-54"><a href="#cb37-54" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> [<span class="st">'scale'</span>, <span class="st">'auto'</span>, <span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>]</span>
-<span id="cb37-55"><a href="#cb37-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-56"><a href="#cb37-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-57"><a href="#cb37-57" aria-hidden="true" tabindex="-1"></a>random_grid <span class="op">=</span> {</span>
-<span id="cb37-58"><a href="#cb37-58" aria-hidden="true" tabindex="-1"></a>    <span class="st">'C'</span>: C,</span>
-<span id="cb37-59"><a href="#cb37-59" aria-hidden="true" tabindex="-1"></a>    <span class="st">'epsilon'</span>: epsilon,</span>
-<span id="cb37-60"><a href="#cb37-60" aria-hidden="true" tabindex="-1"></a>    <span class="st">'kernel'</span>: kernel,</span>
-<span id="cb37-61"><a href="#cb37-61" aria-hidden="true" tabindex="-1"></a>    <span class="st">'gamma'</span>: gamma</span>
-<span id="cb37-62"><a href="#cb37-62" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb37-63"><a href="#cb37-63" aria-hidden="true" tabindex="-1"></a>pprint(random_grid)</span>
-<span id="cb37-64"><a href="#cb37-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-47"><a href="#cb37-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-48"><a href="#cb37-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-49"><a href="#cb37-49" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> [<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>]</span>
+<span id="cb37-50"><a href="#cb37-50" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> [<span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.5</span>]</span>
+<span id="cb37-51"><a href="#cb37-51" aria-hidden="true" tabindex="-1"></a>kernel <span class="op">=</span> [<span class="st">'rbf'</span>, <span class="st">'poly'</span>, <span class="st">'sigmoid'</span>]</span>
+<span id="cb37-52"><a href="#cb37-52" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> [<span class="st">'scale'</span>, <span class="st">'auto'</span>, <span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>]</span>
+<span id="cb37-53"><a href="#cb37-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-54"><a href="#cb37-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-55"><a href="#cb37-55" aria-hidden="true" tabindex="-1"></a>random_grid <span class="op">=</span> {</span>
+<span id="cb37-56"><a href="#cb37-56" aria-hidden="true" tabindex="-1"></a>    <span class="st">'C'</span>: C,</span>
+<span id="cb37-57"><a href="#cb37-57" aria-hidden="true" tabindex="-1"></a>    <span class="st">'epsilon'</span>: epsilon,</span>
+<span id="cb37-58"><a href="#cb37-58" aria-hidden="true" tabindex="-1"></a>    <span class="st">'kernel'</span>: kernel,</span>
+<span id="cb37-59"><a href="#cb37-59" aria-hidden="true" tabindex="-1"></a>    <span class="st">'gamma'</span>: gamma</span>
+<span id="cb37-60"><a href="#cb37-60" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-61"><a href="#cb37-61" aria-hidden="true" tabindex="-1"></a>pprint(random_grid)</span>
+<span id="cb37-62"><a href="#cb37-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-63"><a href="#cb37-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-64"><a href="#cb37-64" aria-hidden="true" tabindex="-1"></a>svm <span class="op">=</span> SVR()</span>
 <span id="cb37-65"><a href="#cb37-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-66"><a href="#cb37-66" aria-hidden="true" tabindex="-1"></a>svm <span class="op">=</span> SVR()</span>
-<span id="cb37-67"><a href="#cb37-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-68"><a href="#cb37-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-69"><a href="#cb37-69" aria-hidden="true" tabindex="-1"></a>svm_random <span class="op">=</span> RandomizedSearchCV(</span>
-<span id="cb37-70"><a href="#cb37-70" aria-hidden="true" tabindex="-1"></a>    estimator<span class="op">=</span>svm,</span>
-<span id="cb37-71"><a href="#cb37-71" aria-hidden="true" tabindex="-1"></a>    param_distributions<span class="op">=</span>random_grid,</span>
-<span id="cb37-72"><a href="#cb37-72" aria-hidden="true" tabindex="-1"></a>    n_iter<span class="op">=</span><span class="dv">100</span>,</span>
-<span id="cb37-73"><a href="#cb37-73" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>,  </span>
-<span id="cb37-74"><a href="#cb37-74" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="dv">2</span>,</span>
-<span id="cb37-75"><a href="#cb37-75" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span><span class="dv">42</span>,</span>
-<span id="cb37-76"><a href="#cb37-76" aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=-</span><span class="dv">1</span></span>
-<span id="cb37-77"><a href="#cb37-77" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb37-78"><a href="#cb37-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-66"><a href="#cb37-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-67"><a href="#cb37-67" aria-hidden="true" tabindex="-1"></a>svm_random <span class="op">=</span> RandomizedSearchCV(</span>
+<span id="cb37-68"><a href="#cb37-68" aria-hidden="true" tabindex="-1"></a>    estimator<span class="op">=</span>svm,</span>
+<span id="cb37-69"><a href="#cb37-69" aria-hidden="true" tabindex="-1"></a>    param_distributions<span class="op">=</span>random_grid,</span>
+<span id="cb37-70"><a href="#cb37-70" aria-hidden="true" tabindex="-1"></a>    n_iter<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb37-71"><a href="#cb37-71" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>,  </span>
+<span id="cb37-72"><a href="#cb37-72" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb37-73"><a href="#cb37-73" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb37-74"><a href="#cb37-74" aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=-</span><span class="dv">1</span></span>
+<span id="cb37-75"><a href="#cb37-75" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-76"><a href="#cb37-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-77"><a href="#cb37-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-78"><a href="#cb37-78" aria-hidden="true" tabindex="-1"></a>svm_random.fit(X_train, y_train)</span>
 <span id="cb37-79"><a href="#cb37-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-80"><a href="#cb37-80" aria-hidden="true" tabindex="-1"></a>svm_random.fit(X_train, y_train)</span>
-<span id="cb37-81"><a href="#cb37-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-80"><a href="#cb37-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-81"><a href="#cb37-81" aria-hidden="true" tabindex="-1"></a>svm_random.best_params_</span>
 <span id="cb37-82"><a href="#cb37-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-83"><a href="#cb37-83" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best parameters:"</span>, svm_random.best_params_)</span>
-<span id="cb37-84"><a href="#cb37-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-83"><a href="#cb37-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-84"><a href="#cb37-84" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> svm_random.predict(X_test)</span>
 <span id="cb37-85"><a href="#cb37-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-86"><a href="#cb37-86" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> svm_random.predict(X_test)</span>
-<span id="cb37-87"><a href="#cb37-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-86"><a href="#cb37-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-87"><a href="#cb37-87" aria-hidden="true" tabindex="-1"></a>yt <span class="op">=</span> y_test.to_numpy()</span>
 <span id="cb37-88"><a href="#cb37-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-89"><a href="#cb37-89" aria-hidden="true" tabindex="-1"></a>yt <span class="op">=</span> y_test.to_numpy()</span>
-<span id="cb37-90"><a href="#cb37-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-89"><a href="#cb37-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-90"><a href="#cb37-90" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> predict.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb37-91"><a href="#cb37-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-92"><a href="#cb37-92" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> predict.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb37-93"><a href="#cb37-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-94"><a href="#cb37-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-95"><a href="#cb37-95" aria-hidden="true" tabindex="-1"></a>svm_result <span class="op">=</span> pd.concat([pd.DataFrame(predict), pd.DataFrame(yt)], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb37-96"><a href="#cb37-96" aria-hidden="true" tabindex="-1"></a>svm_result.to_csv(<span class="st">'svmnuhtpressure_svm.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb37-92"><a href="#cb37-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-93"><a href="#cb37-93" aria-hidden="true" tabindex="-1"></a>svm_result <span class="op">=</span> pd.concat([pd.DataFrame(predict), pd.DataFrame(yt)], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb37-94"><a href="#cb37-94" aria-hidden="true" tabindex="-1"></a>svm_result.to_csv(<span class="st">'svmnuhtpressure_svm.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>3- <strong>DT</strong></p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1318,7 +1316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb38-82"><a href="#cb38-82" aria-hidden="true" tabindex="-1"></a>dt_random.fit(X_train, y_train)</span>
 <span id="cb38-83"><a href="#cb38-83" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-84"><a href="#cb38-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-85"><a href="#cb38-85" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best parameters:"</span>, dt_random.best_params_)</span>
+<span id="cb38-85"><a href="#cb38-85" aria-hidden="true" tabindex="-1"></a>dt_random.best_params_</span>
 <span id="cb38-86"><a href="#cb38-86" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-87"><a href="#cb38-87" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-88"><a href="#cb38-88" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> dt_random.predict(X_test)</span>
@@ -1389,29 +1387,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb39-54"><a href="#cb39-54" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb39-55"><a href="#cb39-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-56"><a href="#cb39-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-57"><a href="#cb39-57" aria-hidden="true" tabindex="-1"></a>pprint(param_dist)</span>
+<span id="cb39-57"><a href="#cb39-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-58"><a href="#cb39-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-59"><a href="#cb39-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-60"><a href="#cb39-60" aria-hidden="true" tabindex="-1"></a>random_search <span class="op">=</span> RandomizedSearchCV(estimator<span class="op">=</span>xg_reg, param_distributions<span class="op">=</span>param_dist, n_iter<span class="op">=</span><span class="dv">100</span>, </span>
-<span id="cb39-61"><a href="#cb39-61" aria-hidden="true" tabindex="-1"></a>                                   cv<span class="op">=</span><span class="dv">3</span>, verbose<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">42</span>, n_jobs<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb39-59"><a href="#cb39-59" aria-hidden="true" tabindex="-1"></a>random_search <span class="op">=</span> RandomizedSearchCV(estimator<span class="op">=</span>xg_reg, param_distributions<span class="op">=</span>param_dist, n_iter<span class="op">=</span><span class="dv">100</span>, </span>
+<span id="cb39-60"><a href="#cb39-60" aria-hidden="true" tabindex="-1"></a>                                   cv<span class="op">=</span><span class="dv">3</span>, verbose<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">42</span>, n_jobs<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb39-61"><a href="#cb39-61" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-62"><a href="#cb39-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-63"><a href="#cb39-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-64"><a href="#cb39-64" aria-hidden="true" tabindex="-1"></a>random_search.fit(X_train, y_train)</span>
+<span id="cb39-63"><a href="#cb39-63" aria-hidden="true" tabindex="-1"></a>random_search.fit(X_train, y_train)</span>
+<span id="cb39-64"><a href="#cb39-64" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-65"><a href="#cb39-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-66"><a href="#cb39-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-67"><a href="#cb39-67" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best hyperparameters found: "</span>, random_search.best_params_)</span>
+<span id="cb39-66"><a href="#cb39-66" aria-hidden="true" tabindex="-1"></a>random_search.best_params_</span>
+<span id="cb39-67"><a href="#cb39-67" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-68"><a href="#cb39-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-69"><a href="#cb39-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-70"><a href="#cb39-70" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> random_search.predict(X_test)</span>
+<span id="cb39-69"><a href="#cb39-69" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> random_search.predict(X_test)</span>
+<span id="cb39-70"><a href="#cb39-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-71"><a href="#cb39-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-72"><a href="#cb39-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-73"><a href="#cb39-73" aria-hidden="true" tabindex="-1"></a>yt <span class="op">=</span> y_test.to_numpy()</span>
+<span id="cb39-72"><a href="#cb39-72" aria-hidden="true" tabindex="-1"></a>yt <span class="op">=</span> y_test.to_numpy()</span>
+<span id="cb39-73"><a href="#cb39-73" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-74"><a href="#cb39-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-75"><a href="#cb39-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-76"><a href="#cb39-76" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pd.concat([pd.DataFrame(predict), pd.DataFrame(yt)], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb39-75"><a href="#cb39-75" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pd.concat([pd.DataFrame(predict), pd.DataFrame(yt)], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb39-76"><a href="#cb39-76" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-77"><a href="#cb39-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-78"><a href="#cb39-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-79"><a href="#cb39-79" aria-hidden="true" tabindex="-1"></a>result.to_csv(<span class="st">'xgboostpressure.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-78"><a href="#cb39-78" aria-hidden="true" tabindex="-1"></a>result.to_csv(<span class="st">'xgboostpressure.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>5- <strong>LightGBM</strong></p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install lightgbm</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1426,19 +1423,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> RandomizedSearchCV</span>
 <span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
 <span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"heatml-pressure.csv"</span>)</span>
 <span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean column names</span></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>column <span class="op">=</span> data.columns.to_list()</span>
 <span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>data.columns <span class="op">=</span> [a.strip() <span class="cf">for</span> a <span class="kw">in</span> column]</span>
 <span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Encoding of dependent variables</span></span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>fluid_dummy <span class="op">=</span> pd.get_dummies(data[<span class="st">'Fluid'</span>], drop_first<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation matrix</span></span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>corr_data <span class="op">=</span> data.copy()</span>
 <span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> corr_data.corr()</span>
 <span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a></span>
@@ -1446,19 +1443,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">".2f"</span>, cmap<span class="op">=</span><span class="st">"Greens"</span>)</span>
 <span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Define target variable Y and drop other columns from data</span></span>
+<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns<span class="op">=</span>[<span class="st">'Nu'</span>])</span>
 <span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Split data into training and testing sets</span></span>
+<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-39"><a href="#cb40-39" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb40-40"><a href="#cb40-40" aria-hidden="true" tabindex="-1"></a>y_test.columns <span class="op">=</span> [<span class="st">'y_test'</span>]</span>
 <span id="cb40-41"><a href="#cb40-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-42"><a href="#cb40-42" aria-hidden="true" tabindex="-1"></a><span class="co"># LightGBM model</span></span>
+<span id="cb40-42"><a href="#cb40-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-43"><a href="#cb40-43" aria-hidden="true" tabindex="-1"></a>lgb_reg <span class="op">=</span> lgb.LGBMRegressor(random_state<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb40-44"><a href="#cb40-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-45"><a href="#cb40-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Hyperparameter tuning</span></span>
-<span id="cb40-46"><a href="#cb40-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the parameter grid for RandomizedSearchCV</span></span>
+<span id="cb40-45"><a href="#cb40-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-46"><a href="#cb40-46" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-47"><a href="#cb40-47" aria-hidden="true" tabindex="-1"></a>param_dist <span class="op">=</span> {</span>
 <span id="cb40-48"><a href="#cb40-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_estimators'</span>: [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> np.linspace(start<span class="op">=</span><span class="dv">200</span>, stop<span class="op">=</span><span class="dv">2000</span>, num<span class="op">=</span><span class="dv">10</span>)],</span>
 <span id="cb40-49"><a href="#cb40-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> np.linspace(<span class="dv">3</span>, <span class="dv">15</span>, num<span class="op">=</span><span class="dv">13</span>)],</span>
@@ -1470,22 +1467,452 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb40-55"><a href="#cb40-55" aria-hidden="true" tabindex="-1"></a>    <span class="st">'reg_lambda'</span>: [<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>]</span>
 <span id="cb40-56"><a href="#cb40-56" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb40-57"><a href="#cb40-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-58"><a href="#cb40-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the random grid of hyperparameters</span></span>
-<span id="cb40-59"><a href="#cb40-59" aria-hidden="true" tabindex="-1"></a>pprint(param_dist)</span>
+<span id="cb40-58"><a href="#cb40-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-59"><a href="#cb40-59" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-60"><a href="#cb40-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-61"><a href="#cb40-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform RandomizedSearchCV with 3-fold cross-validation and 100 iterations</span></span>
-<span id="cb40-62"><a href="#cb40-62" aria-hidden="true" tabindex="-1"></a>random_search <span class="op">=</span> RandomizedSearchCV(estimator<span class="op">=</span>lgb_reg, param_distributions<span class="op">=</span>param_dist, n_iter<span class="op">=</span><span class="dv">100</span>,</span>
-<span id="cb40-63"><a href="#cb40-63" aria-hidden="true" tabindex="-1"></a>                                   cv<span class="op">=</span><span class="dv">3</span>, verbose<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">42</span>, n_jobs<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb40-61"><a href="#cb40-61" aria-hidden="true" tabindex="-1"></a>random_search <span class="op">=</span> RandomizedSearchCV(estimator<span class="op">=</span>lgb_reg, param_distributions<span class="op">=</span>param_dist, n_iter<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb40-62"><a href="#cb40-62" aria-hidden="true" tabindex="-1"></a>                                   cv<span class="op">=</span><span class="dv">3</span>, verbose<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">42</span>, n_jobs<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb40-63"><a href="#cb40-63" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-64"><a href="#cb40-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-65"><a href="#cb40-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-66"><a href="#cb40-66" aria-hidden="true" tabindex="-1"></a>random_search.fit(X_train, y_train)</span>
+<span id="cb40-65"><a href="#cb40-65" aria-hidden="true" tabindex="-1"></a>random_search.fit(X_train, y_train)</span>
+<span id="cb40-66"><a href="#cb40-66" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-67"><a href="#cb40-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-68"><a href="#cb40-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-69"><a href="#cb40-69" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best hyperparameters found: "</span>, random_search.best_params_)</span>
+<span id="cb40-68"><a href="#cb40-68" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best hyperparameters found: "</span>, random_search.best_params_)</span>
+<span id="cb40-69"><a href="#cb40-69" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-70"><a href="#cb40-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-71"><a href="#cb40-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-72"><a href="#cb40-72" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> random_search.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-71"><a href="#cb40-71" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> random_search.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Testing on an excluded subset</strong></p>
+<p>1- <strong>RFR</strong></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> PolynomialFeatures</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVR</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"WholeExcludeCiofalo.csv"</span>)</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>data1 <span class="op">=</span> pd.read_csv(<span class="st">"Ciofalo.csv"</span>)</span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>column <span class="op">=</span> data.columns.to_list()</span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>data.columns <span class="op">=</span> [a.strip() <span class="cf">for</span> a <span class="kw">in</span> column]</span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>fluid_dummy <span class="op">=</span> pd.get_dummies(data[<span class="st">'Fluid'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a>corr_data <span class="op">=</span> data.copy()</span>
+<span id="cb41-33"><a href="#cb41-33" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> corr_data.corr()</span>
+<span id="cb41-34"><a href="#cb41-34" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>,<span class="dv">12</span>))</span>
+<span id="cb41-35"><a href="#cb41-35" aria-hidden="true" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">".2f"</span>, cmap<span class="op">=</span><span class="st">"Greens"</span>)</span>
+<span id="cb41-36"><a href="#cb41-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb41-37"><a href="#cb41-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-38"><a href="#cb41-38" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
+<span id="cb41-39"><a href="#cb41-39" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb41-40"><a href="#cb41-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-41"><a href="#cb41-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-42"><a href="#cb41-42" aria-hidden="true" tabindex="-1"></a>column1 <span class="op">=</span> data1.columns.to_list()</span>
+<span id="cb41-43"><a href="#cb41-43" aria-hidden="true" tabindex="-1"></a>data1.columns <span class="op">=</span> [a.strip() <span class="cf">for</span> a <span class="kw">in</span> column1]</span>
+<span id="cb41-44"><a href="#cb41-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-45"><a href="#cb41-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-46"><a href="#cb41-46" aria-hidden="true" tabindex="-1"></a>fluid_dummy1 <span class="op">=</span> pd.get_dummies(data1[<span class="st">'Fluid'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb41-47"><a href="#cb41-47" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb41-48"><a href="#cb41-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-49"><a href="#cb41-49" aria-hidden="true" tabindex="-1"></a>Y_test <span class="op">=</span> pd.DataFrame(data1[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
+<span id="cb41-50"><a href="#cb41-50" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb41-51"><a href="#cb41-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-52"><a href="#cb41-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-53"><a href="#cb41-53" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> data</span>
+<span id="cb41-54"><a href="#cb41-54" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> Y</span>
+<span id="cb41-55"><a href="#cb41-55" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> data1</span>
+<span id="cb41-56"><a href="#cb41-56" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> Y_test</span>
+<span id="cb41-57"><a href="#cb41-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-58"><a href="#cb41-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-59"><a href="#cb41-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-60"><a href="#cb41-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-61"><a href="#cb41-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-62"><a href="#cb41-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-63"><a href="#cb41-63" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
+<span id="cb41-64"><a href="#cb41-64" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestRegressor(random_state <span class="op">=</span> <span class="dv">42</span>)</span>
+<span id="cb41-65"><a href="#cb41-65" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb41-66"><a href="#cb41-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-67"><a href="#cb41-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-68"><a href="#cb41-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-69"><a href="#cb41-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-70"><a href="#cb41-70" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> RandomizedSearchCV</span>
+<span id="cb41-71"><a href="#cb41-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-72"><a href="#cb41-72" aria-hidden="true" tabindex="-1"></a>n_estimators <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> np.linspace(start <span class="op">=</span> <span class="dv">200</span>, stop <span class="op">=</span> <span class="dv">2000</span>, num <span class="op">=</span> <span class="dv">10</span>)]</span>
+<span id="cb41-73"><a href="#cb41-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-74"><a href="#cb41-74" aria-hidden="true" tabindex="-1"></a>max_features <span class="op">=</span> [<span class="st">'auto'</span>, <span class="st">'sqrt'</span>]</span>
+<span id="cb41-75"><a href="#cb41-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-76"><a href="#cb41-76" aria-hidden="true" tabindex="-1"></a>max_depth <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> np.linspace(<span class="dv">10</span>, <span class="dv">110</span>, num <span class="op">=</span> <span class="dv">11</span>)]</span>
+<span id="cb41-77"><a href="#cb41-77" aria-hidden="true" tabindex="-1"></a>max_depth.append(<span class="va">None</span>)</span>
+<span id="cb41-78"><a href="#cb41-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-79"><a href="#cb41-79" aria-hidden="true" tabindex="-1"></a>min_samples_split <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>]</span>
+<span id="cb41-80"><a href="#cb41-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-81"><a href="#cb41-81" aria-hidden="true" tabindex="-1"></a>min_samples_leaf <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>]</span>
+<span id="cb41-82"><a href="#cb41-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-83"><a href="#cb41-83" aria-hidden="true" tabindex="-1"></a>bootstrap <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>]</span>
+<span id="cb41-84"><a href="#cb41-84" aria-hidden="true" tabindex="-1"></a>random_grid <span class="op">=</span> {<span class="st">'n_estimators'</span>: n_estimators,</span>
+<span id="cb41-85"><a href="#cb41-85" aria-hidden="true" tabindex="-1"></a>               <span class="st">'max_features'</span>: max_features,</span>
+<span id="cb41-86"><a href="#cb41-86" aria-hidden="true" tabindex="-1"></a>               <span class="st">'max_depth'</span>: max_depth,</span>
+<span id="cb41-87"><a href="#cb41-87" aria-hidden="true" tabindex="-1"></a>               <span class="st">'min_samples_split'</span>: min_samples_split,</span>
+<span id="cb41-88"><a href="#cb41-88" aria-hidden="true" tabindex="-1"></a>               <span class="st">'min_samples_leaf'</span>: min_samples_leaf,</span>
+<span id="cb41-89"><a href="#cb41-89" aria-hidden="true" tabindex="-1"></a>               <span class="st">'bootstrap'</span>: bootstrap}</span>
+<span id="cb41-90"><a href="#cb41-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-91"><a href="#cb41-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-92"><a href="#cb41-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-93"><a href="#cb41-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-94"><a href="#cb41-94" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestRegressor()</span>
+<span id="cb41-95"><a href="#cb41-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-96"><a href="#cb41-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-97"><a href="#cb41-97" aria-hidden="true" tabindex="-1"></a>rf_random <span class="op">=</span> RandomizedSearchCV(estimator <span class="op">=</span> rf, param_distributions <span class="op">=</span> random_grid, n_iter <span class="op">=</span> <span class="dv">100</span>, cv <span class="op">=</span> <span class="dv">3</span>, verbose<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">42</span>, n_jobs <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb41-98"><a href="#cb41-98" aria-hidden="true" tabindex="-1"></a>rf_random.fit(X_train, y_train)</span>
+<span id="cb41-99"><a href="#cb41-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-100"><a href="#cb41-100" aria-hidden="true" tabindex="-1"></a>rf_random.best_params_</span>
+<span id="cb41-101"><a href="#cb41-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-102"><a href="#cb41-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-103"><a href="#cb41-103" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> rf_random.predict(X_test)</span>
+<span id="cb41-104"><a href="#cb41-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-105"><a href="#cb41-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-106"><a href="#cb41-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-107"><a href="#cb41-107" aria-hidden="true" tabindex="-1"></a>yt <span class="op">=</span> y_test.to_numpy()</span>
+<span id="cb41-108"><a href="#cb41-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-109"><a href="#cb41-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-110"><a href="#cb41-110" aria-hidden="true" tabindex="-1"></a>predict.reshape(<span class="dv">63</span>,<span class="dv">1</span>)</span>
+<span id="cb41-111"><a href="#cb41-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-112"><a href="#cb41-112" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pd.concat([pd.DataFrame(predict), pd.DataFrame(yt)], axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb41-113"><a href="#cb41-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-114"><a href="#cb41-114" aria-hidden="true" tabindex="-1"></a>result.to_csv(<span class="st">'rfrnuhtexc.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>2- <strong>SVR</strong></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVR</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> RandomizedSearchCV</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"WholeExcludeCiofalo.csv"</span>)</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>data1 <span class="op">=</span> pd.read_csv(<span class="st">"Ciofalo.csv"</span>)</span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>column <span class="op">=</span> data.columns.to_list()</span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>data.columns <span class="op">=</span> [a.strip() <span class="cf">for</span> a <span class="kw">in</span> column]</span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>fluid_dummy <span class="op">=</span> pd.get_dummies(data[<span class="st">'Fluid'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>corr_data <span class="op">=</span> data.copy()</span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> corr_data.corr()</span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>,<span class="dv">12</span>))</span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">".2f"</span>, cmap<span class="op">=</span><span class="st">"Greens"</span>)</span>
+<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
+<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a>column1 <span class="op">=</span> data1.columns.to_list()</span>
+<span id="cb42-41"><a href="#cb42-41" aria-hidden="true" tabindex="-1"></a>data1.columns <span class="op">=</span> [a.strip() <span class="cf">for</span> a <span class="kw">in</span> column1]</span>
+<span id="cb42-42"><a href="#cb42-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-44"><a href="#cb42-44" aria-hidden="true" tabindex="-1"></a>fluid_dummy1 <span class="op">=</span> pd.get_dummies(data1[<span class="st">'Fluid'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb42-45"><a href="#cb42-45" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb42-46"><a href="#cb42-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-47"><a href="#cb42-47" aria-hidden="true" tabindex="-1"></a>Y_test <span class="op">=</span> pd.DataFrame(data1[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
+<span id="cb42-48"><a href="#cb42-48" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb42-49"><a href="#cb42-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-50"><a href="#cb42-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-51"><a href="#cb42-51" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> data</span>
+<span id="cb42-52"><a href="#cb42-52" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> Y</span>
+<span id="cb42-53"><a href="#cb42-53" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> data1</span>
+<span id="cb42-54"><a href="#cb42-54" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> Y_test</span>
+<span id="cb42-55"><a href="#cb42-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-56"><a href="#cb42-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-57"><a href="#cb42-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-58"><a href="#cb42-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-59"><a href="#cb42-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-60"><a href="#cb42-60" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb42-61"><a href="#cb42-61" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> scaler.fit_transform(X_train)</span>
+<span id="cb42-62"><a href="#cb42-62" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> scaler.transform(X_test)</span>
+<span id="cb42-63"><a href="#cb42-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-64"><a href="#cb42-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-65"><a href="#cb42-65" aria-hidden="true" tabindex="-1"></a>svm <span class="op">=</span> SVR()</span>
+<span id="cb42-66"><a href="#cb42-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-67"><a href="#cb42-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-68"><a href="#cb42-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-69"><a href="#cb42-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-70"><a href="#cb42-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-71"><a href="#cb42-71" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> [<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>]</span>
+<span id="cb42-72"><a href="#cb42-72" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> [<span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.5</span>]</span>
+<span id="cb42-73"><a href="#cb42-73" aria-hidden="true" tabindex="-1"></a>kernel <span class="op">=</span> [<span class="st">'rbf'</span>, <span class="st">'poly'</span>, <span class="st">'sigmoid'</span>]</span>
+<span id="cb42-74"><a href="#cb42-74" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> [<span class="st">'scale'</span>, <span class="st">'auto'</span>, <span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>]</span>
+<span id="cb42-75"><a href="#cb42-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-76"><a href="#cb42-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-77"><a href="#cb42-77" aria-hidden="true" tabindex="-1"></a>random_grid <span class="op">=</span> {</span>
+<span id="cb42-78"><a href="#cb42-78" aria-hidden="true" tabindex="-1"></a>    <span class="st">'C'</span>: C,</span>
+<span id="cb42-79"><a href="#cb42-79" aria-hidden="true" tabindex="-1"></a>    <span class="st">'epsilon'</span>: epsilon,</span>
+<span id="cb42-80"><a href="#cb42-80" aria-hidden="true" tabindex="-1"></a>    <span class="st">'kernel'</span>: kernel,</span>
+<span id="cb42-81"><a href="#cb42-81" aria-hidden="true" tabindex="-1"></a>    <span class="st">'gamma'</span>: gamma</span>
+<span id="cb42-82"><a href="#cb42-82" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-83"><a href="#cb42-83" aria-hidden="true" tabindex="-1"></a>pprint(random_grid)</span>
+<span id="cb42-84"><a href="#cb42-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-85"><a href="#cb42-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-86"><a href="#cb42-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-87"><a href="#cb42-87" aria-hidden="true" tabindex="-1"></a>svm <span class="op">=</span> SVR()</span>
+<span id="cb42-88"><a href="#cb42-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-89"><a href="#cb42-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-90"><a href="#cb42-90" aria-hidden="true" tabindex="-1"></a>svm_random <span class="op">=</span> RandomizedSearchCV(</span>
+<span id="cb42-91"><a href="#cb42-91" aria-hidden="true" tabindex="-1"></a>    estimator<span class="op">=</span>svm,</span>
+<span id="cb42-92"><a href="#cb42-92" aria-hidden="true" tabindex="-1"></a>    param_distributions<span class="op">=</span>random_grid,</span>
+<span id="cb42-93"><a href="#cb42-93" aria-hidden="true" tabindex="-1"></a>    n_iter<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb42-94"><a href="#cb42-94" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>,  </span>
+<span id="cb42-95"><a href="#cb42-95" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb42-96"><a href="#cb42-96" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb42-97"><a href="#cb42-97" aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=-</span><span class="dv">1</span></span>
+<span id="cb42-98"><a href="#cb42-98" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-99"><a href="#cb42-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-100"><a href="#cb42-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-101"><a href="#cb42-101" aria-hidden="true" tabindex="-1"></a>svm_random.fit(X_train, y_train)</span>
+<span id="cb42-102"><a href="#cb42-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-103"><a href="#cb42-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-104"><a href="#cb42-104" aria-hidden="true" tabindex="-1"></a>svm_random.best_params_</span>
+<span id="cb42-105"><a href="#cb42-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-106"><a href="#cb42-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-107"><a href="#cb42-107" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> svm_random.predict(X_test)</span>
+<span id="cb42-108"><a href="#cb42-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-109"><a href="#cb42-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-110"><a href="#cb42-110" aria-hidden="true" tabindex="-1"></a>yt <span class="op">=</span> y_test.to_numpy()</span>
+<span id="cb42-111"><a href="#cb42-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-112"><a href="#cb42-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-113"><a href="#cb42-113" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> predict.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb42-114"><a href="#cb42-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-115"><a href="#cb42-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-116"><a href="#cb42-116" aria-hidden="true" tabindex="-1"></a>svm_result <span class="op">=</span> pd.concat([pd.DataFrame(predict), pd.DataFrame(yt)], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb42-117"><a href="#cb42-117" aria-hidden="true" tabindex="-1"></a>svm_result.to_csv(<span class="st">'svmnuhtexcluded.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>3- <strong>DT</strong></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> RandomizedSearchCV</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"WholeExcludeCiofalo.csv"</span>)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>data1 <span class="op">=</span> pd.read_csv(<span class="st">"Ciofalo.csv"</span>)</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>column <span class="op">=</span> data.columns.to_list()</span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>data.columns <span class="op">=</span> [a.strip() <span class="cf">for</span> a <span class="kw">in</span> column]</span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>fluid_dummy <span class="op">=</span> pd.get_dummies(data[<span class="st">'Fluid'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>corr_data <span class="op">=</span> data.copy()</span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> corr_data.corr()</span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>,<span class="dv">12</span>))</span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">".2f"</span>, cmap<span class="op">=</span><span class="st">"Greens"</span>)</span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
+<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a>column1 <span class="op">=</span> data1.columns.to_list()</span>
+<span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a>data1.columns <span class="op">=</span> [a.strip() <span class="cf">for</span> a <span class="kw">in</span> column1]</span>
+<span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a>fluid_dummy1 <span class="op">=</span> pd.get_dummies(data1[<span class="st">'Fluid'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb43-41"><a href="#cb43-41" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb43-42"><a href="#cb43-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-43"><a href="#cb43-43" aria-hidden="true" tabindex="-1"></a>Y_test <span class="op">=</span> pd.DataFrame(data1[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
+<span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-46"><a href="#cb43-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-47"><a href="#cb43-47" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> data</span>
+<span id="cb43-48"><a href="#cb43-48" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> Y</span>
+<span id="cb43-49"><a href="#cb43-49" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> data1</span>
+<span id="cb43-50"><a href="#cb43-50" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> Y_test</span>
+<span id="cb43-51"><a href="#cb43-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-52"><a href="#cb43-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-53"><a href="#cb43-53" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeRegressor(random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb43-54"><a href="#cb43-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-55"><a href="#cb43-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-56"><a href="#cb43-56" aria-hidden="true" tabindex="-1"></a>max_depth <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> np.linspace(<span class="dv">10</span>, <span class="dv">110</span>, num<span class="op">=</span><span class="dv">11</span>)]</span>
+<span id="cb43-57"><a href="#cb43-57" aria-hidden="true" tabindex="-1"></a>max_depth.append(<span class="va">None</span>)</span>
+<span id="cb43-58"><a href="#cb43-58" aria-hidden="true" tabindex="-1"></a>min_samples_split <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">10</span>]</span>
+<span id="cb43-59"><a href="#cb43-59" aria-hidden="true" tabindex="-1"></a>min_samples_leaf <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>]</span>
+<span id="cb43-60"><a href="#cb43-60" aria-hidden="true" tabindex="-1"></a>max_features <span class="op">=</span> [<span class="st">'auto'</span>, <span class="st">'sqrt'</span>, <span class="va">None</span>]</span>
+<span id="cb43-61"><a href="#cb43-61" aria-hidden="true" tabindex="-1"></a>criterion <span class="op">=</span> [<span class="st">'mse'</span>, <span class="st">'friedman_mse'</span>, <span class="st">'mae'</span>]</span>
+<span id="cb43-62"><a href="#cb43-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-63"><a href="#cb43-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-64"><a href="#cb43-64" aria-hidden="true" tabindex="-1"></a>random_grid <span class="op">=</span> {</span>
+<span id="cb43-65"><a href="#cb43-65" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: max_depth,</span>
+<span id="cb43-66"><a href="#cb43-66" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_samples_split'</span>: min_samples_split,</span>
+<span id="cb43-67"><a href="#cb43-67" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_samples_leaf'</span>: min_samples_leaf,</span>
+<span id="cb43-68"><a href="#cb43-68" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_features'</span>: max_features,</span>
+<span id="cb43-69"><a href="#cb43-69" aria-hidden="true" tabindex="-1"></a>    <span class="st">'criterion'</span>: criterion</span>
+<span id="cb43-70"><a href="#cb43-70" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-71"><a href="#cb43-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-72"><a href="#cb43-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-73"><a href="#cb43-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-74"><a href="#cb43-74" aria-hidden="true" tabindex="-1"></a>dt_random <span class="op">=</span> RandomizedSearchCV(</span>
+<span id="cb43-75"><a href="#cb43-75" aria-hidden="true" tabindex="-1"></a>    estimator<span class="op">=</span>dt,</span>
+<span id="cb43-76"><a href="#cb43-76" aria-hidden="true" tabindex="-1"></a>    param_distributions<span class="op">=</span>random_grid,</span>
+<span id="cb43-77"><a href="#cb43-77" aria-hidden="true" tabindex="-1"></a>    n_iter<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb43-78"><a href="#cb43-78" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb43-79"><a href="#cb43-79" aria-hidden="true" tabindex="-1"></a>    verbose<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb43-80"><a href="#cb43-80" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb43-81"><a href="#cb43-81" aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=-</span><span class="dv">1</span></span>
+<span id="cb43-82"><a href="#cb43-82" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-83"><a href="#cb43-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-84"><a href="#cb43-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-85"><a href="#cb43-85" aria-hidden="true" tabindex="-1"></a>dt_random.fit(X_train, y_train)</span>
+<span id="cb43-86"><a href="#cb43-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-87"><a href="#cb43-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-88"><a href="#cb43-88" aria-hidden="true" tabindex="-1"></a>dt_random.best_params_</span>
+<span id="cb43-89"><a href="#cb43-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-90"><a href="#cb43-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-91"><a href="#cb43-91" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> dt_random.predict(X_test)</span>
+<span id="cb43-92"><a href="#cb43-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-93"><a href="#cb43-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-94"><a href="#cb43-94" aria-hidden="true" tabindex="-1"></a>yt <span class="op">=</span> y_test.to_numpy()</span>
+<span id="cb43-95"><a href="#cb43-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-96"><a href="#cb43-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-97"><a href="#cb43-97" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> predict.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb43-98"><a href="#cb43-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-99"><a href="#cb43-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-100"><a href="#cb43-100" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pd.concat([pd.DataFrame(predict), pd.DataFrame(yt)], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb43-101"><a href="#cb43-101" aria-hidden="true" tabindex="-1"></a>result.to_csv(<span class="st">'dtnuhtexc.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>4- <strong>XGBoost</strong></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> xgboost <span class="im">import</span> XGBRegressor</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> RandomizedSearchCV</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"WholeExcludeCiofalo.csv"</span>)</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>data1 <span class="op">=</span> pd.read_csv(<span class="st">"Ciofalo.csv"</span>)</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>column <span class="op">=</span> data.columns.to_list()</span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>data.columns <span class="op">=</span> [a.strip() <span class="cf">for</span> a <span class="kw">in</span> column]</span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>fluid_dummy <span class="op">=</span> pd.get_dummies(data[<span class="st">'Fluid'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>corr_data <span class="op">=</span> data.copy()</span>
+<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="op">=</span> corr_data.corr()</span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>,<span class="dv">12</span>))</span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>sns.heatmap(correlation_matrix, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">".2f"</span>, cmap<span class="op">=</span><span class="st">"Greens"</span>)</span>
+<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
+<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a>column1 <span class="op">=</span> data1.columns.to_list()</span>
+<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a>data1.columns <span class="op">=</span> [a.strip() <span class="cf">for</span> a <span class="kw">in</span> column1]</span>
+<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a>fluid_dummy1 <span class="op">=</span> pd.get_dummies(data1[<span class="st">'Fluid'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb44-46"><a href="#cb44-46" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb44-47"><a href="#cb44-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-48"><a href="#cb44-48" aria-hidden="true" tabindex="-1"></a>Y_test <span class="op">=</span> pd.DataFrame(data1[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
+<span id="cb44-49"><a href="#cb44-49" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb44-50"><a href="#cb44-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-51"><a href="#cb44-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-52"><a href="#cb44-52" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> data</span>
+<span id="cb44-53"><a href="#cb44-53" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> Y</span>
+<span id="cb44-54"><a href="#cb44-54" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> data1</span>
+<span id="cb44-55"><a href="#cb44-55" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> Y_test</span>
+<span id="cb44-56"><a href="#cb44-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-57"><a href="#cb44-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-58"><a href="#cb44-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-59"><a href="#cb44-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-60"><a href="#cb44-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-61"><a href="#cb44-61" aria-hidden="true" tabindex="-1"></a>xg_reg <span class="op">=</span> XGBRegressor(random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb44-62"><a href="#cb44-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-63"><a href="#cb44-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-64"><a href="#cb44-64" aria-hidden="true" tabindex="-1"></a>param_dist <span class="op">=</span> {</span>
+<span id="cb44-65"><a href="#cb44-65" aria-hidden="true" tabindex="-1"></a>    <span class="st">'n_estimators'</span>: [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> np.linspace(start<span class="op">=</span><span class="dv">200</span>, stop<span class="op">=</span><span class="dv">2000</span>, num<span class="op">=</span><span class="dv">10</span>)],</span>
+<span id="cb44-66"><a href="#cb44-66" aria-hidden="true" tabindex="-1"></a>    <span class="st">'max_depth'</span>: [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> np.linspace(<span class="dv">3</span>, <span class="dv">15</span>, num<span class="op">=</span><span class="dv">13</span>)],</span>
+<span id="cb44-67"><a href="#cb44-67" aria-hidden="true" tabindex="-1"></a>    <span class="st">'learning_rate'</span>: [<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>],</span>
+<span id="cb44-68"><a href="#cb44-68" aria-hidden="true" tabindex="-1"></a>    <span class="st">'subsample'</span>: [<span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="fl">1.0</span>],</span>
+<span id="cb44-69"><a href="#cb44-69" aria-hidden="true" tabindex="-1"></a>    <span class="st">'colsample_bytree'</span>: [<span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="fl">1.0</span>],</span>
+<span id="cb44-70"><a href="#cb44-70" aria-hidden="true" tabindex="-1"></a>    <span class="st">'gamma'</span>: [<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>],</span>
+<span id="cb44-71"><a href="#cb44-71" aria-hidden="true" tabindex="-1"></a>    <span class="st">'min_child_weight'</span>: [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>]</span>
+<span id="cb44-72"><a href="#cb44-72" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-73"><a href="#cb44-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-74"><a href="#cb44-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-75"><a href="#cb44-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-76"><a href="#cb44-76" aria-hidden="true" tabindex="-1"></a>random_search <span class="op">=</span> RandomizedSearchCV(estimator<span class="op">=</span>xg_reg, param_distributions<span class="op">=</span>param_dist, n_iter<span class="op">=</span><span class="dv">100</span>, </span>
+<span id="cb44-77"><a href="#cb44-77" aria-hidden="true" tabindex="-1"></a>                                   cv<span class="op">=</span><span class="dv">3</span>, verbose<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">42</span>, n_jobs<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb44-78"><a href="#cb44-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-79"><a href="#cb44-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-80"><a href="#cb44-80" aria-hidden="true" tabindex="-1"></a>random_search.fit(X_train, y_train)</span>
+<span id="cb44-81"><a href="#cb44-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-82"><a href="#cb44-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-83"><a href="#cb44-83" aria-hidden="true" tabindex="-1"></a>random_search.best_params_</span>
+<span id="cb44-84"><a href="#cb44-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-85"><a href="#cb44-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-86"><a href="#cb44-86" aria-hidden="true" tabindex="-1"></a>predict <span class="op">=</span> random_search.predict(X_test)</span>
+<span id="cb44-87"><a href="#cb44-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-88"><a href="#cb44-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-89"><a href="#cb44-89" aria-hidden="true" tabindex="-1"></a>yt <span class="op">=</span> y_test.to_numpy()</span>
+<span id="cb44-90"><a href="#cb44-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-91"><a href="#cb44-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-92"><a href="#cb44-92" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> pd.concat([pd.DataFrame(predict), pd.DataFrame(yt)], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb44-93"><a href="#cb44-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-94"><a href="#cb44-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-95"><a href="#cb44-95" aria-hidden="true" tabindex="-1"></a>result.to_csv(<span class="st">'xgboosexc.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 
