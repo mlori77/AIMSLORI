@@ -15,18 +15,11 @@ In this post, we have applied some ML and DL algotihms on a dataset compiled fro
 ``` python
 import pandas as pd
 import numpy as np
-import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
+import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.svm import SVR
-from sklearn.metrics import r2_score
 from sklearn.model_selection import RandomizedSearchCV
 ```
 
@@ -118,15 +111,12 @@ predict = rf_random.predict(X_test)
 ``` python
 import pandas as pd
 import numpy as np
-import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
+import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVR
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 ```
 
 [Loading dataset:]{.underline}
@@ -138,8 +128,7 @@ data = pd.read_csv("heatml.csv")
 [Encoding:]{.underline}
 
 ``` python
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first=True)
@@ -179,8 +168,7 @@ Model definition, Hyperparameters tuning and Prediction
 svm = SVR()
 
 
-print('Parameters currently in use:\n')
-pprint(svm.get_params())
+
 
 
 C = [0.01, 0.1, 1, 10, 100, 1000]
@@ -195,10 +183,8 @@ random_grid = {
     'kernel': kernel,
     'gamma': gamma
 }
-pprint(random_grid)
 
 
-svm = SVR()
 
 
 svm_random = RandomizedSearchCV(
@@ -228,15 +214,12 @@ predict = svm_random.predict(X_test)
 ``` python
 import pandas as pd
 import numpy as np
-import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
+import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 ```
 
 [Loading dataset:]{.underline}
@@ -248,8 +231,6 @@ data = pd.read_csv("heatml.csv")
 [Encoding:]{.underline}
 
 ``` python
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
@@ -285,13 +266,12 @@ dt = DecisionTreeRegressor(random_state=42)
 
 
 
-max_depth = [int(x) for x in np.linspace(10, 110, num=11)]
-max_depth.append(None)
-
-min_samples_split = [2, 5, 10]
+max_depth = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, None]
 
 
-min_samples_leaf = [1, 2, 4]
+min_samples_split = [2, 5, 7, 10, 20, 50, 100]
+
+min_samples_leaf = [1, 2, 4, 5, 10, 50, 100, 200]
 
 
 max_features = ['auto', 'sqrt', None]
@@ -343,13 +323,10 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from xgboost import XGBRegressor
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 ```
 
 [Loading dataset:]{.underline}
@@ -361,8 +338,7 @@ data = pd.read_csv("heatml.csv")
 [Encoding:]{.underline}
 
 ``` python
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first=True)
 
@@ -398,8 +374,8 @@ xg_reg = XGBRegressor(random_state=42)
 
 
 param_dist = {
-    'n_estimators': [int(x) for x in np.linspace(start=200, stop=2000, num=10)],
-    'max_depth': [int(x) for x in np.linspace(3, 15, num=13)],
+    'n_estimators': np.arange(200, 2001, 200),
+    'max_depth': [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
     'learning_rate': [0.001, 0.01, 0.1, 0.2, 0.3],
     'subsample': [0.5, 0.7, 1.0],
     'colsample_bytree': [0.5, 0.7, 1.0],
@@ -408,7 +384,7 @@ param_dist = {
 }
 
 
-pprint(param_dist)
+
 
 
 random_search = RandomizedSearchCV(estimator=xg_reg, param_distributions=param_dist, n_iter=100, 
@@ -424,6 +400,8 @@ random_search.best_params_
 predict = random_search.predict(X_test)
 ```
 
+If you got an error of "['super' object has no attribute '\_\_sklearn_tags\_\_'](https://stackoverflow.com/questions/79290968/super-object-has-no-attribute-sklearn-tags)" try this line of code "pip install scikit-learn==1.1.3", downgrading your sklearn
+
 5- **LightGBM**
 
 [Importing and installing needed libraries:]{.underline}
@@ -434,13 +412,10 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import lightgbm as lgb
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 ```
 
 [Loading dataset:]{.underline}
@@ -453,8 +428,6 @@ data = pd.read_csv("heatml.csv")
 
 ``` python
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first=True)
@@ -494,8 +467,8 @@ lgb_reg = lgb.LGBMRegressor(random_state=42)
 
 
 param_dist = {
-    'n_estimators': [int(x) for x in np.linspace(start=200, stop=2000, num=10)],
-    'max_depth': [int(x) for x in np.linspace(3, 15, num=13)],
+    'n_estimators': np.arange(200, 2001, 200),
+    'max_depth': np.arange(3, 15,1),
     'learning_rate': [0.001, 0.01, 0.1, 0.2, 0.3],
     'subsample': [0.5, 0.7, 1.0],
     'colsample_bytree': [0.5, 0.7, 1.0],
@@ -531,24 +504,15 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.svm import SVR
-from sklearn.metrics import r2_score
+from sklearn.model_selection import RandomizedSearchCV
 
 
 data = pd.read_csv("heatml-gas.csv")
 
-column = data.columns.to_list()
 
-
-data.columns = [a.strip() for a in column]
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
@@ -574,9 +538,8 @@ X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size = 0.2, ra
 
 y_test.columns = ['y_test']
 
-from sklearn.ensemble import RandomForestRegressor
 rf = RandomForestRegressor(random_state = 42)
-from pprint import pprint
+
 
 pprint(rf.get_params())
 
