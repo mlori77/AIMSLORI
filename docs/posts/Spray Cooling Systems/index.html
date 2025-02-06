@@ -1938,7 +1938,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb46-47"><a href="#cb46-47" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb46-48"><a href="#cb46-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> DNN</span>
 <span id="cb46-49"><a href="#cb46-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-50"><a href="#cb46-50" aria-hidden="true" tabindex="-1"></a>layers <span class="op">=</span> [</span>
+<span id="cb46-50"><a href="#cb46-50" aria-hidden="true" tabindex="-1"></a>layers <span class="op">=</span> [ (<span class="dv">64</span>, <span class="dv">32</span>), (<span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>), (<span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>), (<span class="dv">512</span>, <span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>),</span>
 <span id="cb46-51"><a href="#cb46-51" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>, <span class="dv">16</span>, <span class="dv">8</span>),        </span>
 <span id="cb46-52"><a href="#cb46-52" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>, <span class="dv">16</span>),      </span>
 <span id="cb46-53"><a href="#cb46-53" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">512</span>, <span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>),     </span>
@@ -1958,49 +1958,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb46-67"><a href="#cb46-67" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> GridSearchCV(estimator<span class="op">=</span>model, param_grid<span class="op">=</span>param_grid, cv<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb46-68"><a href="#cb46-68" aria-hidden="true" tabindex="-1"></a>grid_result <span class="op">=</span> grid.fit(X, y)</span>
 <span id="cb46-69"><a href="#cb46-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-70"><a href="#cb46-70" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The tunned parameters are:"</span>, grid_result.best_params_)</span>
-<span id="cb46-71"><a href="#cb46-71" aria-hidden="true" tabindex="-1"></a>best_params <span class="op">=</span> grid_result.best_params_</span>
-<span id="cb46-72"><a href="#cb46-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-73"><a href="#cb46-73" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">5</span>, random_state<span class="op">=</span><span class="dv">3</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb46-74"><a href="#cb46-74" aria-hidden="true" tabindex="-1"></a>selected_model <span class="op">=</span> KerasRegressor(model<span class="op">=</span>DNN_model, layers<span class="op">=</span>best_params[<span class="st">'layers'</span>],</span>
-<span id="cb46-75"><a href="#cb46-75" aria-hidden="true" tabindex="-1"></a>                                lr_rate<span class="op">=</span>best_params[<span class="st">'lr_rate'</span>],</span>
-<span id="cb46-76"><a href="#cb46-76" aria-hidden="true" tabindex="-1"></a>                                batch_size<span class="op">=</span>best_params[<span class="st">'batch_size'</span>],</span>
-<span id="cb46-77"><a href="#cb46-77" aria-hidden="true" tabindex="-1"></a>                                epochs<span class="op">=</span>best_params[<span class="st">'epochs'</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb46-78"><a href="#cb46-78" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> cross_val_score(selected_model, X, y, scoring<span class="op">=</span><span class="st">'r2'</span>, cv<span class="op">=</span>cv, n_jobs<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb46-79"><a href="#cb46-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-80"><a href="#cb46-80" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
-<span id="cb46-81"><a href="#cb46-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-82"><a href="#cb46-82" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> DNN_model(layers<span class="op">=</span>best_params[<span class="st">'layers'</span>], lr_rate<span class="op">=</span>best_params[<span class="st">'lr_rate'</span>])</span>
-<span id="cb46-83"><a href="#cb46-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-84"><a href="#cb46-84" aria-hidden="true" tabindex="-1"></a>early_stopping <span class="op">=</span> EarlyStopping(monitor<span class="op">=</span><span class="st">'val_loss'</span>, patience<span class="op">=</span><span class="dv">20</span>, restore_best_weights<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb46-85"><a href="#cb46-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-86"><a href="#cb46-86" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train, epochs<span class="op">=</span>best_params[<span class="st">'epochs'</span>],</span>
-<span id="cb46-87"><a href="#cb46-87" aria-hidden="true" tabindex="-1"></a>                    batch_size<span class="op">=</span>best_params[<span class="st">'batch_size'</span>],</span>
-<span id="cb46-88"><a href="#cb46-88" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(X_test, y_test),</span>
-<span id="cb46-89"><a href="#cb46-89" aria-hidden="true" tabindex="-1"></a>                    verbose<span class="op">=</span><span class="dv">0</span>, callbacks<span class="op">=</span>[early_stopping])</span>
-<span id="cb46-90"><a href="#cb46-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-91"><a href="#cb46-91" aria-hidden="true" tabindex="-1"></a>plt.plot(history.history[<span class="st">'loss'</span>])</span>
-<span id="cb46-92"><a href="#cb46-92" aria-hidden="true" tabindex="-1"></a>plt.plot(history.history[<span class="st">'val_loss'</span>])</span>
-<span id="cb46-93"><a href="#cb46-93" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Model Performance'</span>)</span>
-<span id="cb46-94"><a href="#cb46-94" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Loss'</span>)</span>
-<span id="cb46-95"><a href="#cb46-95" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Epoch'</span>)</span>
-<span id="cb46-96"><a href="#cb46-96" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'Train'</span>, <span class="st">'Val'</span>], loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
-<span id="cb46-97"><a href="#cb46-97" aria-hidden="true" tabindex="-1"></a>plt.box(<span class="va">False</span>)</span>
-<span id="cb46-98"><a href="#cb46-98" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb46-99"><a href="#cb46-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-100"><a href="#cb46-100" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb46-101"><a href="#cb46-101" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"R2 score:"</span>, r2_score(y_test, y_pred))</span>
-<span id="cb46-102"><a href="#cb46-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-103"><a href="#cb46-103" aria-hidden="true" tabindex="-1"></a>mae <span class="op">=</span> mean_absolute_error(y_test, y_pred)</span>
-<span id="cb46-104"><a href="#cb46-104" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Mean Absolute Error (MAE):"</span>, mae)</span>
-<span id="cb46-105"><a href="#cb46-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-106"><a href="#cb46-106" aria-hidden="true" tabindex="-1"></a>y_original <span class="op">=</span> y_scaler.inverse_transform(y_pred.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb46-107"><a href="#cb46-107" aria-hidden="true" tabindex="-1"></a>y_test_original <span class="op">=</span> y_scaler.inverse_transform(y_test.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb46-108"><a href="#cb46-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-109"><a href="#cb46-109" aria-hidden="true" tabindex="-1"></a>mlp_result <span class="op">=</span> pd.concat([pd.DataFrame(y_original), pd.DataFrame(y_test_original)], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb46-110"><a href="#cb46-110" aria-hidden="true" tabindex="-1"></a>mlp_result</span>
-<span id="cb46-111"><a href="#cb46-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-112"><a href="#cb46-112" aria-hidden="true" tabindex="-1"></a>mlp_result.to_csv(<span class="st">'ann_no_dropout.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-70"><a href="#cb46-70" aria-hidden="true" tabindex="-1"></a>best_params <span class="op">=</span> grid_result.best_params_</span>
+<span id="cb46-71"><a href="#cb46-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-72"><a href="#cb46-72" aria-hidden="true" tabindex="-1"></a>cv <span class="op">=</span> KFold(n_splits<span class="op">=</span><span class="dv">5</span>, random_state<span class="op">=</span><span class="dv">3</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb46-73"><a href="#cb46-73" aria-hidden="true" tabindex="-1"></a>selected_model <span class="op">=</span> KerasRegressor(model<span class="op">=</span>DNN_model, layers<span class="op">=</span>best_params[<span class="st">'layers'</span>],</span>
+<span id="cb46-74"><a href="#cb46-74" aria-hidden="true" tabindex="-1"></a>                                lr_rate<span class="op">=</span>best_params[<span class="st">'lr_rate'</span>],</span>
+<span id="cb46-75"><a href="#cb46-75" aria-hidden="true" tabindex="-1"></a>                                batch_size<span class="op">=</span>best_params[<span class="st">'batch_size'</span>],</span>
+<span id="cb46-76"><a href="#cb46-76" aria-hidden="true" tabindex="-1"></a>                                epochs<span class="op">=</span>best_params[<span class="st">'epochs'</span>], verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb46-77"><a href="#cb46-77" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> cross_val_score(selected_model, X, y, scoring<span class="op">=</span><span class="st">'r2'</span>, cv<span class="op">=</span>cv, n_jobs<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb46-78"><a href="#cb46-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-79"><a href="#cb46-79" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb46-80"><a href="#cb46-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-81"><a href="#cb46-81" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> DNN_model(layers<span class="op">=</span>best_params[<span class="st">'layers'</span>], lr_rate<span class="op">=</span>best_params[<span class="st">'lr_rate'</span>])</span>
+<span id="cb46-82"><a href="#cb46-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-83"><a href="#cb46-83" aria-hidden="true" tabindex="-1"></a>early_stopping <span class="op">=</span> EarlyStopping(monitor<span class="op">=</span><span class="st">'val_loss'</span>, patience<span class="op">=</span><span class="dv">20</span>, restore_best_weights<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb46-84"><a href="#cb46-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-85"><a href="#cb46-85" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train, epochs<span class="op">=</span>best_params[<span class="st">'epochs'</span>],</span>
+<span id="cb46-86"><a href="#cb46-86" aria-hidden="true" tabindex="-1"></a>                    batch_size<span class="op">=</span>best_params[<span class="st">'batch_size'</span>],</span>
+<span id="cb46-87"><a href="#cb46-87" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(X_test, y_test),</span>
+<span id="cb46-88"><a href="#cb46-88" aria-hidden="true" tabindex="-1"></a>                    verbose<span class="op">=</span><span class="dv">0</span>, callbacks<span class="op">=</span>[early_stopping])</span>
+<span id="cb46-89"><a href="#cb46-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-90"><a href="#cb46-90" aria-hidden="true" tabindex="-1"></a>plt.plot(history.history[<span class="st">'loss'</span>])</span>
+<span id="cb46-91"><a href="#cb46-91" aria-hidden="true" tabindex="-1"></a>plt.plot(history.history[<span class="st">'val_loss'</span>])</span>
+<span id="cb46-92"><a href="#cb46-92" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Model Performance'</span>)</span>
+<span id="cb46-93"><a href="#cb46-93" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Loss'</span>)</span>
+<span id="cb46-94"><a href="#cb46-94" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Epoch'</span>)</span>
+<span id="cb46-95"><a href="#cb46-95" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'Train'</span>, <span class="st">'Val'</span>], loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb46-96"><a href="#cb46-96" aria-hidden="true" tabindex="-1"></a>plt.box(<span class="va">False</span>)</span>
+<span id="cb46-97"><a href="#cb46-97" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb46-98"><a href="#cb46-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-99"><a href="#cb46-99" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb46-100"><a href="#cb46-100" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"R2 score:"</span>, r2_score(y_test, y_pred))</span>
+<span id="cb46-101"><a href="#cb46-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-102"><a href="#cb46-102" aria-hidden="true" tabindex="-1"></a>mae <span class="op">=</span> mean_absolute_error(y_test, y_pred)</span>
+<span id="cb46-103"><a href="#cb46-103" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Mean Absolute Error (MAE):"</span>, mae)</span>
+<span id="cb46-104"><a href="#cb46-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-105"><a href="#cb46-105" aria-hidden="true" tabindex="-1"></a>y_original <span class="op">=</span> y_scaler.inverse_transform(y_pred.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb46-106"><a href="#cb46-106" aria-hidden="true" tabindex="-1"></a>y_test_original <span class="op">=</span> y_scaler.inverse_transform(y_test.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb46-107"><a href="#cb46-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-108"><a href="#cb46-108" aria-hidden="true" tabindex="-1"></a>mlp_result <span class="op">=</span> pd.concat([pd.DataFrame(y_original), pd.DataFrame(y_test_original)], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb46-109"><a href="#cb46-109" aria-hidden="true" tabindex="-1"></a>mlp_result</span>
+<span id="cb46-110"><a href="#cb46-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-111"><a href="#cb46-111" aria-hidden="true" tabindex="-1"></a>mlp_result.to_csv(<span class="st">'ann_no_dropout.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><u>Using dropout</u></p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip3 install scikeras</span>
@@ -2129,109 +2128,88 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scikeras.wrappers <span class="im">import</span> KerasRegressor</span>
 <span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
-<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/mlori77/ANN/main/heatml.csv'</span></span>
-<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url)</span>
-<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>df_model <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>])</span>
-<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> df_model.drop(columns<span class="op">=</span>[<span class="st">'Nu'</span>,<span class="st">'At'</span>,<span class="st">'mio'</span>,<span class="st">'k'</span>, <span class="st">'um'</span>]).values</span>
-<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> df_model.Nu.values</span>
-<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a><span class="co"># StandardScaler for feature scaling</span></span>
-<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>x_scaler <span class="op">=</span> StandardScaler()</span>
-<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> x_scaler.fit_transform(X1)</span>
-<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a><span class="co"># StandardScaler for target variable</span></span>
-<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a>y_scaler <span class="op">=</span> StandardScaler()</span>
-<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y_scaler.fit_transform(y1.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a>n_features <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/mlori77/ANN/main/heatml.csv'</span></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>df_model <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>])</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> df_model.drop(columns<span class="op">=</span>[<span class="st">'Nu'</span>,<span class="st">'At'</span>,<span class="st">'mio'</span>,<span class="st">'k'</span>, <span class="st">'um'</span>]).values</span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> df_model.Nu.values</span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>x_scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> x_scaler.fit_transform(X1)</span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>y_scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y_scaler.fit_transform(y1.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a>n_features <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
+<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> DNN_model(layers, lr_rate):</span>
+<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a>    DNN <span class="op">=</span> Sequential()</span>
 <span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Define model function without Dropout and with extended layers</span></span>
-<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> DNN_model(layers, lr_rate):</span>
-<span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a>    DNN <span class="op">=</span> Sequential()</span>
-<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># First hidden layer</span></span>
-<span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a>    DNN.add(Dense(layers[<span class="dv">0</span>], input_dim<span class="op">=</span>n_features, kernel_initializer<span class="op">=</span><span class="st">'glorot_uniform'</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
-<span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a>    DNN.add(BatchNormalization())  <span class="co"># Batch Normalization</span></span>
-<span id="cb48-41"><a href="#cb48-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-42"><a href="#cb48-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Additional hidden layers (extended layers)</span></span>
-<span id="cb48-43"><a href="#cb48-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> nodes <span class="kw">in</span> layers[<span class="dv">1</span>:]:</span>
-<span id="cb48-44"><a href="#cb48-44" aria-hidden="true" tabindex="-1"></a>        DNN.add(Dense(nodes, kernel_initializer<span class="op">=</span><span class="st">'uniform'</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
-<span id="cb48-45"><a href="#cb48-45" aria-hidden="true" tabindex="-1"></a>        DNN.add(BatchNormalization())  <span class="co"># Batch Normalization</span></span>
-<span id="cb48-46"><a href="#cb48-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-47"><a href="#cb48-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Output layer</span></span>
-<span id="cb48-48"><a href="#cb48-48" aria-hidden="true" tabindex="-1"></a>    DNN.add(Dense(units<span class="op">=</span><span class="dv">1</span>, kernel_initializer<span class="op">=</span><span class="st">'uniform'</span>, activation<span class="op">=</span><span class="st">'linear'</span>))</span>
-<span id="cb48-49"><a href="#cb48-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-50"><a href="#cb48-50" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adam optimizer</span></span>
-<span id="cb48-51"><a href="#cb48-51" aria-hidden="true" tabindex="-1"></a>    opt <span class="op">=</span> Adam(learning_rate<span class="op">=</span>lr_rate)</span>
-<span id="cb48-52"><a href="#cb48-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-53"><a href="#cb48-53" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compile the model with Mean Absolute Error (MAE) loss</span></span>
-<span id="cb48-54"><a href="#cb48-54" aria-hidden="true" tabindex="-1"></a>    DNN.<span class="bu">compile</span>(optimizer<span class="op">=</span>opt,</span>
-<span id="cb48-55"><a href="#cb48-55" aria-hidden="true" tabindex="-1"></a>                loss<span class="op">=</span><span class="st">"mae"</span>,</span>
-<span id="cb48-56"><a href="#cb48-56" aria-hidden="true" tabindex="-1"></a>                metrics<span class="op">=</span>[MeanAbsoluteError()])</span>
-<span id="cb48-57"><a href="#cb48-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-58"><a href="#cb48-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> DNN</span>
-<span id="cb48-59"><a href="#cb48-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-60"><a href="#cb48-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the search parameters</span></span>
-<span id="cb48-61"><a href="#cb48-61" aria-hidden="true" tabindex="-1"></a>layers <span class="op">=</span> [</span>
-<span id="cb48-62"><a href="#cb48-62" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">64</span>, <span class="dv">32</span>), (<span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>), (<span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>), (<span class="dv">512</span>, <span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>),     </span>
-<span id="cb48-63"><a href="#cb48-63" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1024</span>, <span class="dv">512</span>, <span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>),   </span>
-<span id="cb48-64"><a href="#cb48-64" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>, <span class="dv">16</span>, <span class="dv">8</span>),   </span>
-<span id="cb48-65"><a href="#cb48-65" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">512</span>, <span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>, <span class="dv">16</span>)</span>
-<span id="cb48-66"><a href="#cb48-66" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb48-67"><a href="#cb48-67" aria-hidden="true" tabindex="-1"></a>lr_rate <span class="op">=</span> [<span class="fl">0.01</span>, <span class="fl">0.001</span>]</span>
-<span id="cb48-68"><a href="#cb48-68" aria-hidden="true" tabindex="-1"></a>batch_size <span class="op">=</span> [<span class="dv">32</span>, <span class="dv">64</span>]</span>
-<span id="cb48-69"><a href="#cb48-69" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">200</span>]</span>
-<span id="cb48-70"><a href="#cb48-70" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> <span class="bu">dict</span>(layers<span class="op">=</span>layers, lr_rate<span class="op">=</span>lr_rate, batch_size<span class="op">=</span>batch_size, epochs<span class="op">=</span>epochs)</span>
+<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a>    DNN.add(Dense(layers[<span class="dv">0</span>], input_dim<span class="op">=</span>n_features, kernel_initializer<span class="op">=</span><span class="st">'glorot_uniform'</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
+<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a>    DNN.add(BatchNormalization())  <span class="co"># Batch Normalization</span></span>
+<span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> nodes <span class="kw">in</span> layers[<span class="dv">1</span>:]:</span>
+<span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a>        DNN.add(Dense(nodes, kernel_initializer<span class="op">=</span><span class="st">'uniform'</span>, activation<span class="op">=</span><span class="st">"relu"</span>))</span>
+<span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a>        DNN.add(BatchNormalization())  <span class="co"># Batch Normalization</span></span>
+<span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-41"><a href="#cb48-41" aria-hidden="true" tabindex="-1"></a>    DNN.add(Dense(units<span class="op">=</span><span class="dv">1</span>, kernel_initializer<span class="op">=</span><span class="st">'uniform'</span>, activation<span class="op">=</span><span class="st">'linear'</span>))</span>
+<span id="cb48-42"><a href="#cb48-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-43"><a href="#cb48-43" aria-hidden="true" tabindex="-1"></a>    opt <span class="op">=</span> Adam(learning_rate<span class="op">=</span>lr_rate)</span>
+<span id="cb48-44"><a href="#cb48-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-45"><a href="#cb48-45" aria-hidden="true" tabindex="-1"></a>    DNN.<span class="bu">compile</span>(optimizer<span class="op">=</span>opt,</span>
+<span id="cb48-46"><a href="#cb48-46" aria-hidden="true" tabindex="-1"></a>                loss<span class="op">=</span><span class="st">"mae"</span>,</span>
+<span id="cb48-47"><a href="#cb48-47" aria-hidden="true" tabindex="-1"></a>                metrics<span class="op">=</span>[MeanAbsoluteError()])</span>
+<span id="cb48-48"><a href="#cb48-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-49"><a href="#cb48-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> DNN</span>
+<span id="cb48-50"><a href="#cb48-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-51"><a href="#cb48-51" aria-hidden="true" tabindex="-1"></a>layers <span class="op">=</span> [</span>
+<span id="cb48-52"><a href="#cb48-52" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">64</span>, <span class="dv">32</span>), (<span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>), (<span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>), (<span class="dv">512</span>, <span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>),     </span>
+<span id="cb48-53"><a href="#cb48-53" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1024</span>, <span class="dv">512</span>, <span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>),   </span>
+<span id="cb48-54"><a href="#cb48-54" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>, <span class="dv">16</span>, <span class="dv">8</span>),   </span>
+<span id="cb48-55"><a href="#cb48-55" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">512</span>, <span class="dv">256</span>, <span class="dv">128</span>, <span class="dv">64</span>, <span class="dv">32</span>, <span class="dv">16</span>)</span>
+<span id="cb48-56"><a href="#cb48-56" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb48-57"><a href="#cb48-57" aria-hidden="true" tabindex="-1"></a>lr_rate <span class="op">=</span> [<span class="fl">0.01</span>, <span class="fl">0.001</span>]</span>
+<span id="cb48-58"><a href="#cb48-58" aria-hidden="true" tabindex="-1"></a>batch_size <span class="op">=</span> [<span class="dv">32</span>, <span class="dv">64</span>]</span>
+<span id="cb48-59"><a href="#cb48-59" aria-hidden="true" tabindex="-1"></a>epochs <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">200</span>]</span>
+<span id="cb48-60"><a href="#cb48-60" aria-hidden="true" tabindex="-1"></a>param_grid <span class="op">=</span> <span class="bu">dict</span>(layers<span class="op">=</span>layers, lr_rate<span class="op">=</span>lr_rate, batch_size<span class="op">=</span>batch_size, epochs<span class="op">=</span>epochs)</span>
+<span id="cb48-61"><a href="#cb48-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-62"><a href="#cb48-62" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> KerasRegressor(model<span class="op">=</span>DNN_model, layers<span class="op">=</span>layers, lr_rate<span class="op">=</span>lr_rate, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb48-63"><a href="#cb48-63" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> RandomizedSearchCV(estimator<span class="op">=</span>model, param_distributions<span class="op">=</span>param_grid, n_iter<span class="op">=</span><span class="dv">20</span>, cv<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb48-64"><a href="#cb48-64" aria-hidden="true" tabindex="-1"></a>grid_result <span class="op">=</span> grid.fit(X, y)</span>
+<span id="cb48-65"><a href="#cb48-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-66"><a href="#cb48-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-67"><a href="#cb48-67" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb48-68"><a href="#cb48-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-69"><a href="#cb48-69" aria-hidden="true" tabindex="-1"></a>best_params <span class="op">=</span> grid_result.best_params_</span>
+<span id="cb48-70"><a href="#cb48-70" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> DNN_model(layers<span class="op">=</span>best_params[<span class="st">'layers'</span>], lr_rate<span class="op">=</span>best_params[<span class="st">'lr_rate'</span>])</span>
 <span id="cb48-71"><a href="#cb48-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-72"><a href="#cb48-72" aria-hidden="true" tabindex="-1"></a><span class="co"># GridSearchCV for hyperparameter tuning (or consider RandomizedSearchCV for better performance)</span></span>
-<span id="cb48-73"><a href="#cb48-73" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> KerasRegressor(model<span class="op">=</span>DNN_model, layers<span class="op">=</span>layers, lr_rate<span class="op">=</span>lr_rate, verbose<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb48-74"><a href="#cb48-74" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> RandomizedSearchCV(estimator<span class="op">=</span>model, param_distributions<span class="op">=</span>param_grid, n_iter<span class="op">=</span><span class="dv">20</span>, cv<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb48-75"><a href="#cb48-75" aria-hidden="true" tabindex="-1"></a>grid_result <span class="op">=</span> grid.fit(X, y)</span>
-<span id="cb48-76"><a href="#cb48-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-77"><a href="#cb48-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Best parameters</span></span>
-<span id="cb48-78"><a href="#cb48-78" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best parameters found: "</span>, grid_result.best_params_)</span>
-<span id="cb48-79"><a href="#cb48-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-80"><a href="#cb48-80" aria-hidden="true" tabindex="-1"></a><span class="co"># Train-test split</span></span>
-<span id="cb48-81"><a href="#cb48-81" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>)</span>
-<span id="cb48-82"><a href="#cb48-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-83"><a href="#cb48-83" aria-hidden="true" tabindex="-1"></a><span class="co"># Create model with the best parameters</span></span>
-<span id="cb48-84"><a href="#cb48-84" aria-hidden="true" tabindex="-1"></a>best_params <span class="op">=</span> grid_result.best_params_</span>
-<span id="cb48-85"><a href="#cb48-85" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> DNN_model(layers<span class="op">=</span>best_params[<span class="st">'layers'</span>], lr_rate<span class="op">=</span>best_params[<span class="st">'lr_rate'</span>])</span>
+<span id="cb48-72"><a href="#cb48-72" aria-hidden="true" tabindex="-1"></a>early_stopping <span class="op">=</span> EarlyStopping(monitor<span class="op">=</span><span class="st">'val_loss'</span>, patience<span class="op">=</span><span class="dv">20</span>, restore_best_weights<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb48-73"><a href="#cb48-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-74"><a href="#cb48-74" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train, epochs<span class="op">=</span>best_params[<span class="st">'epochs'</span>],</span>
+<span id="cb48-75"><a href="#cb48-75" aria-hidden="true" tabindex="-1"></a>                    batch_size<span class="op">=</span>best_params[<span class="st">'batch_size'</span>],</span>
+<span id="cb48-76"><a href="#cb48-76" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(X_test, y_test),</span>
+<span id="cb48-77"><a href="#cb48-77" aria-hidden="true" tabindex="-1"></a>                    verbose<span class="op">=</span><span class="dv">0</span>, callbacks<span class="op">=</span>[early_stopping])</span>
+<span id="cb48-78"><a href="#cb48-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-79"><a href="#cb48-79" aria-hidden="true" tabindex="-1"></a>plt.plot(history.history[<span class="st">'loss'</span>], label<span class="op">=</span><span class="st">'Train Loss'</span>)</span>
+<span id="cb48-80"><a href="#cb48-80" aria-hidden="true" tabindex="-1"></a>plt.plot(history.history[<span class="st">'val_loss'</span>], label<span class="op">=</span><span class="st">'Val Loss'</span>)</span>
+<span id="cb48-81"><a href="#cb48-81" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Model Loss'</span>)</span>
+<span id="cb48-82"><a href="#cb48-82" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Epoch'</span>)</span>
+<span id="cb48-83"><a href="#cb48-83" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Loss'</span>)</span>
+<span id="cb48-84"><a href="#cb48-84" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb48-85"><a href="#cb48-85" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb48-86"><a href="#cb48-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-87"><a href="#cb48-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Early stopping</span></span>
-<span id="cb48-88"><a href="#cb48-88" aria-hidden="true" tabindex="-1"></a>early_stopping <span class="op">=</span> EarlyStopping(monitor<span class="op">=</span><span class="st">'val_loss'</span>, patience<span class="op">=</span><span class="dv">20</span>, restore_best_weights<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb48-89"><a href="#cb48-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-90"><a href="#cb48-90" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit model with early stopping</span></span>
-<span id="cb48-91"><a href="#cb48-91" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train, epochs<span class="op">=</span>best_params[<span class="st">'epochs'</span>],</span>
-<span id="cb48-92"><a href="#cb48-92" aria-hidden="true" tabindex="-1"></a>                    batch_size<span class="op">=</span>best_params[<span class="st">'batch_size'</span>],</span>
-<span id="cb48-93"><a href="#cb48-93" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(X_test, y_test),</span>
-<span id="cb48-94"><a href="#cb48-94" aria-hidden="true" tabindex="-1"></a>                    verbose<span class="op">=</span><span class="dv">0</span>, callbacks<span class="op">=</span>[early_stopping])</span>
+<span id="cb48-87"><a href="#cb48-87" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb48-88"><a href="#cb48-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-89"><a href="#cb48-89" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"R2 Score: "</span>, r2_score(y_test, y_pred))</span>
+<span id="cb48-90"><a href="#cb48-90" aria-hidden="true" tabindex="-1"></a>mae <span class="op">=</span> mean_absolute_error(y_test, y_pred)</span>
+<span id="cb48-91"><a href="#cb48-91" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MAE: "</span>, mae)</span>
+<span id="cb48-92"><a href="#cb48-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-93"><a href="#cb48-93" aria-hidden="true" tabindex="-1"></a>y_original <span class="op">=</span> y_scaler.inverse_transform(y_pred.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb48-94"><a href="#cb48-94" aria-hidden="true" tabindex="-1"></a>y_test_original <span class="op">=</span> y_scaler.inverse_transform(y_test.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb48-95"><a href="#cb48-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-96"><a href="#cb48-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the training history</span></span>
-<span id="cb48-97"><a href="#cb48-97" aria-hidden="true" tabindex="-1"></a>plt.plot(history.history[<span class="st">'loss'</span>], label<span class="op">=</span><span class="st">'Train Loss'</span>)</span>
-<span id="cb48-98"><a href="#cb48-98" aria-hidden="true" tabindex="-1"></a>plt.plot(history.history[<span class="st">'val_loss'</span>], label<span class="op">=</span><span class="st">'Val Loss'</span>)</span>
-<span id="cb48-99"><a href="#cb48-99" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Model Loss'</span>)</span>
-<span id="cb48-100"><a href="#cb48-100" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Epoch'</span>)</span>
-<span id="cb48-101"><a href="#cb48-101" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Loss'</span>)</span>
-<span id="cb48-102"><a href="#cb48-102" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb48-103"><a href="#cb48-103" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb48-104"><a href="#cb48-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-105"><a href="#cb48-105" aria-hidden="true" tabindex="-1"></a><span class="co"># Predictions and model evaluation</span></span>
-<span id="cb48-106"><a href="#cb48-106" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb48-107"><a href="#cb48-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-108"><a href="#cb48-108" aria-hidden="true" tabindex="-1"></a><span class="co"># R2 Score and MAE</span></span>
-<span id="cb48-109"><a href="#cb48-109" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"R2 Score: "</span>, r2_score(y_test, y_pred))</span>
-<span id="cb48-110"><a href="#cb48-110" aria-hidden="true" tabindex="-1"></a>mae <span class="op">=</span> mean_absolute_error(y_test, y_pred)</span>
-<span id="cb48-111"><a href="#cb48-111" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MAE: "</span>, mae)</span>
-<span id="cb48-112"><a href="#cb48-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-113"><a href="#cb48-113" aria-hidden="true" tabindex="-1"></a><span class="co"># Inverse transform</span></span>
-<span id="cb48-114"><a href="#cb48-114" aria-hidden="true" tabindex="-1"></a>y_original <span class="op">=</span> y_scaler.inverse_transform(y_pred.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb48-115"><a href="#cb48-115" aria-hidden="true" tabindex="-1"></a>y_test_original <span class="op">=</span> y_scaler.inverse_transform(y_test.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb48-116"><a href="#cb48-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-117"><a href="#cb48-117" aria-hidden="true" tabindex="-1"></a>mlp_result <span class="op">=</span> pd.concat([pd.DataFrame(y_original), pd.DataFrame(y_test_original)], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb48-118"><a href="#cb48-118" aria-hidden="true" tabindex="-1"></a>mlp_result.to_csv(<span class="st">'ann_results.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-96"><a href="#cb48-96" aria-hidden="true" tabindex="-1"></a>mlp_result <span class="op">=</span> pd.concat([pd.DataFrame(y_original), pd.DataFrame(y_test_original)], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb48-97"><a href="#cb48-97" aria-hidden="true" tabindex="-1"></a>mlp_result.to_csv(<span class="st">'ann_results.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 
