@@ -212,7 +212,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><u>Randomly splitting the dataset into training and testing subsets</u></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size <span class="op">=</span> <span class="fl">0.2</span>, random_state <span class="op">=</span> <span class="dv">0</span>)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
@@ -280,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><u>Randomly splitting the dataset into training and testing subsets and Scaling</u></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns<span class="op">=</span>[<span class="st">'Nu'</span>])</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
@@ -358,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><u>Randomly splitting the dataset into training and testing subsets</u></p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size <span class="op">=</span> <span class="fl">0.2</span>, random_state <span class="op">=</span> <span class="dv">0</span>)</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>y_test.columns <span class="op">=</span> [<span class="st">'y_test'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -441,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><u>Randomly splitting the dataset into training and testing subsets</u></p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns<span class="op">=</span>[<span class="st">'Nu'</span>])</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
@@ -507,7 +507,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><u>Randomly splitting the dataset into training and testing subsets</u></p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns<span class="op">=</span>[<span class="st">'Nu'</span>])</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>data.drop([ <span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
@@ -577,7 +577,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size <span class="op">=</span> <span class="fl">0.2</span>, random_state <span class="op">=</span> <span class="dv">0</span>)</span>
@@ -662,7 +662,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns<span class="op">=</span>[<span class="st">'Nu'</span>])</span>
-<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
@@ -754,7 +754,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size <span class="op">=</span> <span class="fl">0.2</span>, random_state <span class="op">=</span> <span class="dv">0</span>)</span>
 <span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>y_test.columns <span class="op">=</span> [<span class="st">'y_test'</span>]</span>
@@ -853,7 +853,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns<span class="op">=</span>[<span class="st">'Nu'</span>])</span>
-<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
@@ -929,7 +929,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns<span class="op">=</span>[<span class="st">'Nu'</span>])</span>
-<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
@@ -1006,7 +1006,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size <span class="op">=</span> <span class="fl">0.2</span>, random_state <span class="op">=</span> <span class="dv">0</span>)</span>
@@ -1090,7 +1090,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns<span class="op">=</span>[<span class="st">'Nu'</span>])</span>
-<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
@@ -1179,7 +1179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size <span class="op">=</span> <span class="fl">0.2</span>, random_state <span class="op">=</span> <span class="dv">0</span>)</span>
 <span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>y_test.columns <span class="op">=</span> [<span class="st">'y_test'</span>]</span>
@@ -1277,7 +1277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-30"><a href="#cb39-30" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns<span class="op">=</span>[<span class="st">'Nu'</span>])</span>
-<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb39-32"><a href="#cb39-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-33"><a href="#cb39-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-34"><a href="#cb39-34" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
@@ -1353,7 +1353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns<span class="op">=</span>[<span class="st">'Nu'</span>])</span>
-<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(data, Y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
@@ -1422,7 +1422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb41-33"><a href="#cb41-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-34"><a href="#cb41-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-35"><a href="#cb41-35" aria-hidden="true" tabindex="-1"></a></span>
@@ -1526,7 +1526,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a></span>
@@ -1635,7 +1635,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a></span>
@@ -1645,7 +1645,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb43-36"><a href="#cb43-36" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb43-37"><a href="#cb43-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-38"><a href="#cb43-38" aria-hidden="true" tabindex="-1"></a>Y_test <span class="op">=</span> pd.DataFrame(data1[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb43-39"><a href="#cb43-39" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb43-40"><a href="#cb43-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-41"><a href="#cb43-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-42"><a href="#cb43-42" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> data</span>
@@ -1736,7 +1736,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a></span>
@@ -1745,7 +1745,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a>Y_test <span class="op">=</span> pd.DataFrame(data1[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb44-43"><a href="#cb44-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-44"><a href="#cb44-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-45"><a href="#cb44-45" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> data</span>
@@ -1825,17 +1825,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-32"><a href="#cb45-32" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> pd.DataFrame(data[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a>data.drop([<span class="st">''</span>um<span class="st">', '</span>rho<span class="st">', '</span>k<span class="st">', '</span>Nu<span class="st">', '</span>At<span class="st">'], inplace = True, axis = 1)</span></span>
 <span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-35"><a href="#cb45-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-36"><a href="#cb45-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-37"><a href="#cb45-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-38"><a href="#cb45-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-39"><a href="#cb45-39" aria-hidden="true" tabindex="-1"></a>fluid_dummy1 <span class="op">=</span> pd.get_dummies(data1[<span class="st">'Fluid'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb45-39"><a href="#cb45-39" aria-hidden="true" tabindex="-1"></a><span class="er">fluid_dummy1 = pd.get_dummies</span>(data1[<span class="st">'Fluid'</span>], drop_first <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb45-40"><a href="#cb45-40" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb45-41"><a href="#cb45-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-42"><a href="#cb45-42" aria-hidden="true" tabindex="-1"></a>Y_test <span class="op">=</span> pd.DataFrame(data1[<span class="st">'Nu'</span>], columns <span class="op">=</span> [<span class="st">'Nu'</span>])</span>
-<span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'P'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a>data1.drop([<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>], inplace <span class="op">=</span> <span class="va">True</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb45-44"><a href="#cb45-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-45"><a href="#cb45-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-46"><a href="#cb45-46" aria-hidden="true" tabindex="-1"></a>X_train <span class="op">=</span> data</span>
@@ -1908,7 +1908,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>df_model <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>])</span>
 <span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> df_model.drop(columns<span class="op">=</span>[<span class="st">'Nu'</span>,<span class="st">'At'</span>,<span class="st">'mio'</span>,<span class="st">'k'</span>, <span class="st">'um'</span>]).values</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> df_model.drop(columns<span class="op">=</span>[<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>]).values</span>
 <span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> df_model.Nu.values</span>
 <span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>x_scaler <span class="op">=</span> StandardScaler()</span>
@@ -2026,7 +2026,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> df_model.drop(columns<span class="op">=</span>[<span class="st">'Nu'</span>,<span class="st">'At'</span>,<span class="st">'mio'</span>,<span class="st">'k'</span>, <span class="st">'um'</span>, <span class="st">'Pr'</span>, <span class="st">'P'</span>]).values</span>
+<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> df_model.drop(columns<span class="op">=</span>[<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>]).values</span>
 <span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> df_model.Nu.values</span>
 <span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a>x_scaler <span class="op">=</span> StandardScaler()</span>
@@ -2132,7 +2132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url)</span>
 <span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>df_model <span class="op">=</span> df.drop(columns<span class="op">=</span>[<span class="st">'Fluid'</span>, <span class="st">'SAT'</span>])</span>
-<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> df_model.drop(columns<span class="op">=</span>[<span class="st">'Nu'</span>,<span class="st">'At'</span>,<span class="st">'mio'</span>,<span class="st">'k'</span>, <span class="st">'um'</span>]).values</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>X1 <span class="op">=</span> df_model.drop(columns<span class="op">=</span>[<span class="st">'um'</span>, <span class="st">'rho'</span>, <span class="st">'k'</span>, <span class="st">'Nu'</span>, <span class="st">'At'</span>]).values</span>
 <span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> df_model.Nu.values</span>
 <span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>x_scaler <span class="op">=</span> StandardScaler()</span>

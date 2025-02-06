@@ -56,7 +56,7 @@ plt.show()
 
 ``` python
 Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
-data.drop(['P', 'um', 'Pr', 'k', 'Nu'], inplace = True, axis = 1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size = 0.2, random_state = 0)
 
@@ -149,7 +149,7 @@ plt.show()
 
 ``` python
 Y = pd.DataFrame(data['Nu'], columns=['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
 
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size=0.2, random_state=0)
@@ -252,7 +252,7 @@ plt.show()
 
 ``` python
 Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size = 0.2, random_state = 0)
 y_test.columns = ['y_test']
@@ -360,7 +360,7 @@ plt.show()
 
 ``` python
 Y = pd.DataFrame(data['Nu'], columns=['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
 
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size=0.2, random_state=0)
@@ -452,7 +452,7 @@ plt.show()
 ``` python
 
 Y = pd.DataFrame(data['Nu'], columns=['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
+data.drop([ 'um', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
 
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size=0.2, random_state=0)
@@ -531,7 +531,7 @@ plt.show()
 
 
 Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size = 0.2, random_state = 0)
@@ -620,7 +620,7 @@ sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
 plt.show()
 
 Y = pd.DataFrame(data['Nu'], columns=['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
 
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size=0.2, random_state=0)
@@ -716,7 +716,7 @@ sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
 plt.show()
 
 Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size = 0.2, random_state = 0)
 y_test.columns = ['y_test']
@@ -819,7 +819,7 @@ plt.show()
 
 
 Y = pd.DataFrame(data['Nu'], columns=['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
 
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size=0.2, random_state=0)
@@ -899,7 +899,7 @@ plt.show()
 
 
 Y = pd.DataFrame(data['Nu'], columns=['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
 
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size=0.2, random_state=0)
@@ -981,7 +981,7 @@ plt.show()
 
 
 Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size = 0.2, random_state = 0)
@@ -1069,7 +1069,7 @@ sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
 plt.show()
 
 Y = pd.DataFrame(data['Nu'], columns=['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
 
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size=0.2, random_state=0)
@@ -1162,7 +1162,7 @@ sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
 plt.show()
 
 Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size = 0.2, random_state = 0)
 y_test.columns = ['y_test']
@@ -1264,7 +1264,7 @@ plt.show()
 
 
 Y = pd.DataFrame(data['Nu'], columns=['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
 
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size=0.2, random_state=0)
@@ -1344,7 +1344,7 @@ plt.show()
 
 
 Y = pd.DataFrame(data['Nu'], columns=['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace=True, axis=1)
 
 
 X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size=0.2, random_state=0)
@@ -1418,7 +1418,7 @@ sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
 plt.show()
 
 Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
 
@@ -1526,7 +1526,7 @@ sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
 plt.show()
 
 Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
 
@@ -1639,7 +1639,7 @@ sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
 plt.show()
 
 Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
 
@@ -1649,7 +1649,7 @@ fluid_dummy1 = pd.get_dummies(data1['Fluid'], drop_first = True)
 data1.drop(['Fluid', 'SAT'], inplace = True, axis = 1)
 
 Y_test = pd.DataFrame(data1['Nu'], columns = ['Nu'])
-data1.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+data1.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
 X_train = data
@@ -1744,7 +1744,7 @@ sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
 plt.show()
 
 Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+data.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
 
@@ -1753,7 +1753,7 @@ fluid_dummy1 = pd.get_dummies(data1['Fluid'], drop_first = True)
 data1.drop(['Fluid', 'SAT'], inplace = True, axis = 1)
 
 Y_test = pd.DataFrame(data1['Nu'], columns = ['Nu'])
-data1.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+data1.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
 X_train = data
@@ -1837,7 +1837,7 @@ sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="Greens")
 plt.show()
 
 Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
-data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+data.drop([''um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
 
@@ -1847,7 +1847,7 @@ fluid_dummy1 = pd.get_dummies(data1['Fluid'], drop_first = True)
 data1.drop(['Fluid', 'SAT'], inplace = True, axis = 1)
 
 Y_test = pd.DataFrame(data1['Nu'], columns = ['Nu'])
-data1.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
+data1.drop(['um', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
 X_train = data
@@ -1925,7 +1925,7 @@ df = pd.read_csv('htttt.csv')
 
 df_model = df.drop(columns=['Fluid', 'SAT'])
 
-X1 = df_model.drop(columns=['Nu','At','mio','k', 'um']).values
+X1 = df_model.drop(columns=['um', 'rho', 'k', 'Nu', 'At']).values
 y1 = df_model.Nu.values
 
 x_scaler = StandardScaler()
@@ -2047,7 +2047,7 @@ df_model = df.drop(columns = ['Fluid', 'SAT'])
 
 
 
-X1 = df_model.drop(columns=['Nu','At','mio','k', 'um', 'Pr', 'P']).values
+X1 = df_model.drop(columns=['um', 'rho', 'k', 'Nu', 'At']).values
 y1 = df_model.Nu.values
 
 x_scaler = StandardScaler()
@@ -2157,7 +2157,7 @@ url = 'https://raw.githubusercontent.com/mlori77/ANN/main/heatml.csv'
 df = pd.read_csv(url)
 
 df_model = df.drop(columns=['Fluid', 'SAT'])
-X1 = df_model.drop(columns=['Nu','At','mio','k', 'um']).values
+X1 = df_model.drop(columns=['um', 'rho', 'k', 'Nu', 'At']).values
 y1 = df_model.Nu.values
 
 x_scaler = StandardScaler()
