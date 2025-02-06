@@ -541,21 +541,20 @@ y_test.columns = ['y_test']
 rf = RandomForestRegressor(random_state = 42)
 
 
-pprint(rf.get_params())
 
 
-from sklearn.model_selection import RandomizedSearchCV
 
-n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
+n_estimators = np.arange(200, 2001, 200)
 
 max_features = ['auto', 'sqrt']
 
-max_depth = [int(x) for x in np.linspace(10, 110, num = 11)]
-max_depth.append(None)
+max_depth = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, None]
 
-min_samples_split = [2, 5, 10]
 
-min_samples_leaf = [1, 2, 4]
+
+min_samples_split = [2, 5, 7, 10, 20, 50, 100]
+
+min_samples_leaf = [1, 2, 4, 5, 10, 50, 100, 200]
 
 bootstrap = [True, False]
 random_grid = {'n_estimators': n_estimators,
@@ -598,19 +597,15 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVR
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 
 
 data = pd.read_csv("heatml-gas.csv")
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first=True)
@@ -699,19 +694,15 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 
 
 data = pd.read_csv("heatml-gas.csv")
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
@@ -740,10 +731,10 @@ max_depth = [int(x) for x in np.linspace(10, 110, num=11)]
 max_depth.append(None)
 
 
-min_samples_split = [2, 5, 10]
+min_samples_split = [2, 5, 7, 10, 20, 50, 100]
 
 
-min_samples_leaf = [1, 2, 4]
+min_samples_leaf = [1, 2, 4, 5, 10, 50, 100, 200]
 
 
 max_features = ['auto', 'sqrt', None]
@@ -802,20 +793,16 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from xgboost import XGBRegressor
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 
 
 data = pd.read_csv("heatml-gas.csv")
 
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first=True)
@@ -844,9 +831,9 @@ xg_reg = XGBRegressor(random_state=42)
 
 
 param_dist = {
-    'n_estimators': [int(x) for x in np.linspace(start=200, stop=2000, num=10)],
-    'max_depth': [int(x) for x in np.linspace(3, 15, num=13)],
-    'learning_rate': [0.001, 0.01, 0.1, 0.2, 0.3],
+    'n_estimators': np.arange(200, 2001, 200),
+    'max_depth': [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    'learning_rate': [0.0001, 0.001, 0.01, 0.1, 0.2, 0.3],
     'subsample': [0.5, 0.7, 1.0],
     'colsample_bytree': [0.5, 0.7, 1.0],
     'gamma': [0, 0.1, 0.2, 0.3],
@@ -887,20 +874,15 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import lightgbm as lgb
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 
 
 data = pd.read_csv("heatml-gas.csv")
 
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first=True)
@@ -928,9 +910,9 @@ lgb_reg = lgb.LGBMRegressor(random_state=42)
 
 
 param_dist = {
-    'n_estimators': [int(x) for x in np.linspace(start=200, stop=2000, num=10)],
-    'max_depth': [int(x) for x in np.linspace(3, 15, num=13)],
-    'learning_rate': [0.001, 0.01, 0.1, 0.2, 0.3],
+    'n_estimators': np.arange(200, 2001, 200),
+    'max_depth': np.arange(3, 15,1),
+    'learning_rate': [0.0001, 0.001, 0.01, 0.1, 0.2, 0.3],
     'subsample': [0.5, 0.7, 1.0],
     'colsample_bytree': [0.5, 0.7, 1.0],
     'min_child_samples': [5, 10, 20],
@@ -939,7 +921,6 @@ param_dist = {
 }
 
 
-pprint(param_dist)
 
 
 random_search = RandomizedSearchCV(estimator=lgb_reg, param_distributions=param_dist, n_iter=100,
@@ -973,24 +954,15 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.svm import SVR
-from sklearn.metrics import r2_score
+from sklearn.model_selection import RandomizedSearchCV
 
 
 data = pd.read_csv("heatml-pressure.csv")
 
-column = data.columns.to_list()
 
-
-data.columns = [a.strip() for a in column]
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
@@ -1016,25 +988,22 @@ X_train, X_test, y_train, y_test = train_test_split(data, Y, test_size = 0.2, ra
 
 y_test.columns = ['y_test']
 
-from sklearn.ensemble import RandomForestRegressor
 rf = RandomForestRegressor(random_state = 42)
-from pprint import pprint
-
-pprint(rf.get_params())
 
 
-from sklearn.model_selection import RandomizedSearchCV
 
-n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
+
+
+n_estimators = np.arange(200, 2001, 200)
 
 max_features = ['auto', 'sqrt']
 
-max_depth = [int(x) for x in np.linspace(10, 110, num = 11)]
-max_depth.append(None)
+max_depth = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, None]
 
-min_samples_split = [2, 5, 10]
 
-min_samples_leaf = [1, 2, 4]
+min_samples_split = [2, 5, 7, 10, 20, 50, 100]
+
+min_samples_leaf = [1, 2, 4, 5, 10, 50, 100, 200]
 
 bootstrap = [True, False]
 random_grid = {'n_estimators': n_estimators,
@@ -1077,19 +1046,15 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVR
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 
 
 data = pd.read_csv("heatml-pressure.csv")
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first=True)
@@ -1133,7 +1098,6 @@ random_grid = {
     'kernel': kernel,
     'gamma': gamma
 }
-pprint(random_grid)
 
 
 svm = SVR()
@@ -1176,19 +1140,15 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 
 
 data = pd.read_csv("heatml-pressure.csv")
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
@@ -1213,14 +1173,14 @@ dt = DecisionTreeRegressor(random_state=42)
 
 
 
-max_depth = [int(x) for x in np.linspace(10, 110, num=11)]
-max_depth.append(None)
+max_depth = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, None]
 
 
-min_samples_split = [2, 5, 10]
+
+min_samples_split = [2, 5, 7, 10, 20, 50, 100]
 
 
-min_samples_leaf = [1, 2, 4]
+min_samples_leaf = [1, 2, 4, 5, 10, 50, 100, 200]
 
 
 max_features = ['auto', 'sqrt', None]
@@ -1236,7 +1196,6 @@ random_grid = {
     'max_features': max_features,
     'criterion': criterion
 }
-pprint(random_grid)
 
 
 dt = DecisionTreeRegressor()
@@ -1279,20 +1238,16 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from xgboost import XGBRegressor
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 
 
 data = pd.read_csv("heatml-pressure.csv")
 
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first=True)
@@ -1321,9 +1276,9 @@ xg_reg = XGBRegressor(random_state=42)
 
 
 param_dist = {
-    'n_estimators': [int(x) for x in np.linspace(start=200, stop=2000, num=10)],
-    'max_depth': [int(x) for x in np.linspace(3, 15, num=13)],
-    'learning_rate': [0.001, 0.01, 0.1, 0.2, 0.3],
+    'n_estimators': np.arange(200, 2001, 200),
+    'max_depth': [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, None],
+    'learning_rate': [0.0001, 0.001, 0.01, 0.1, 0.2, 0.3],
     'subsample': [0.5, 0.7, 1.0],
     'colsample_bytree': [0.5, 0.7, 1.0],
     'gamma': [0, 0.1, 0.2, 0.3],
@@ -1363,20 +1318,16 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import lightgbm as lgb
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 
 
 data = pd.read_csv("heatml-pressure.csv")
 
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first=True)
@@ -1405,9 +1356,9 @@ lgb_reg = lgb.LGBMRegressor(random_state=42)
 
 
 param_dist = {
-    'n_estimators': [int(x) for x in np.linspace(start=200, stop=2000, num=10)],
-    'max_depth': [int(x) for x in np.linspace(3, 15, num=13)],
-    'learning_rate': [0.001, 0.01, 0.1, 0.2, 0.3],
+    'n_estimators': np.arange(200, 2001, 200),
+    'max_depth': [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, None],
+    'learning_rate': [0.0001, 0.001, 0.01, 0.1, 0.2, 0.3],
     'subsample': [0.5, 0.7, 1.0],
     'colsample_bytree': [0.5, 0.7, 1.0],
     'min_child_samples': [5, 10, 20],
@@ -1440,16 +1391,10 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.svm import SVR
-from sklearn.metrics import r2_score
+from sklearn.model_selection import RandomizedSearchCV
 
 
 
@@ -1459,8 +1404,7 @@ data = pd.read_csv("WholeExcludeCiofalo.csv")
 data1 = pd.read_csv("Ciofalo.csv")
 
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
@@ -1477,8 +1421,7 @@ Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
 data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
-column1 = data1.columns.to_list()
-data1.columns = [a.strip() for a in column1]
+
 
 
 fluid_dummy1 = pd.get_dummies(data1['Fluid'], drop_first = True)
@@ -1498,25 +1441,21 @@ y_test = Y_test
 
 
 
-from sklearn.ensemble import RandomForestRegressor
 rf = RandomForestRegressor(random_state = 42)
-from pprint import pprint
 
 
 
 
-from sklearn.model_selection import RandomizedSearchCV
 
-n_estimators = [int(x) for x in np.linspace(start = 200, stop = 2000, num = 10)]
+n_estimators = np.arange(200, 2001, 200)
 
 max_features = ['auto', 'sqrt']
 
-max_depth = [int(x) for x in np.linspace(10, 110, num = 11)]
-max_depth.append(None)
+max_depth = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, None]
 
-min_samples_split = [2, 5, 10]
+min_samples_split = [2, 5, 7, 10, 20, 50, 100]
 
-min_samples_leaf = [1, 2, 4]
+min_samples_leaf = [1, 2, 4, 5, 10, 50, 100, 200]
 
 bootstrap = [True, False]
 random_grid = {'n_estimators': n_estimators,
@@ -1559,13 +1498,10 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVR
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 
 
 
@@ -1576,8 +1512,7 @@ data1 = pd.read_csv("Ciofalo.csv")
 
 
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
@@ -1594,8 +1529,7 @@ Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
 data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
-column1 = data1.columns.to_list()
-data1.columns = [a.strip() for a in column1]
+
 
 
 fluid_dummy1 = pd.get_dummies(data1['Fluid'], drop_first = True)
@@ -1681,12 +1615,9 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 
 data = pd.read_csv("WholeExcludeCiofalo.csv")
 
@@ -1694,8 +1625,7 @@ data = pd.read_csv("WholeExcludeCiofalo.csv")
 data1 = pd.read_csv("Ciofalo.csv")
 
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
@@ -1712,8 +1642,7 @@ Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
 data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
-column1 = data1.columns.to_list()
-data1.columns = [a.strip() for a in column1]
+
 
 
 fluid_dummy1 = pd.get_dummies(data1['Fluid'], drop_first = True)
@@ -1732,10 +1661,10 @@ y_test = Y_test
 dt = DecisionTreeRegressor(random_state=42)
 
 
-max_depth = [int(x) for x in np.linspace(10, 110, num=11)]
-max_depth.append(None)
-min_samples_split = [2, 5, 10]
-min_samples_leaf = [1, 2, 4]
+max_depth = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, None]
+
+min_samples_split = [2, 5, 7, 10, 20, 50, 100]
+min_samples_leaf = [1, 2, 4, 5, 10, 50, 100, 200]
 max_features = ['auto', 'sqrt', None]
 criterion = ['mse', 'friedman_mse', 'mae']
 
@@ -1787,13 +1716,10 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from xgboost import XGBRegressor
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 
 
 
@@ -1804,8 +1730,7 @@ data1 = pd.read_csv("Ciofalo.csv")
 
 
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
@@ -1821,9 +1746,6 @@ plt.show()
 Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
 data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
-
-column1 = data1.columns.to_list()
-data1.columns = [a.strip() for a in column1]
 
 
 
@@ -1847,8 +1769,8 @@ xg_reg = XGBRegressor(random_state=42)
 
 
 param_dist = {
-    'n_estimators': [int(x) for x in np.linspace(start=200, stop=2000, num=10)],
-    'max_depth': [int(x) for x in np.linspace(3, 15, num=13)],
+    'n_estimators': np.arange(200, 2001, 200),
+    'max_depth': [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
     'learning_rate': [0.001, 0.01, 0.1, 0.2, 0.3],
     'subsample': [0.5, 0.7, 1.0],
     'colsample_bytree': [0.5, 0.7, 1.0],
@@ -1888,13 +1810,10 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import lightgbm as lgb
 from sklearn.model_selection import RandomizedSearchCV
-from pprint import pprint
 
 
 data = pd.read_csv("WholeExcludeCiofalo.csv")
@@ -1904,8 +1823,7 @@ data1 = pd.read_csv("Ciofalo.csv")
 
 
 
-column = data.columns.to_list()
-data.columns = [a.strip() for a in column]
+
 
 
 fluid_dummy = pd.get_dummies(data['Fluid'], drop_first = True)
@@ -1922,8 +1840,7 @@ Y = pd.DataFrame(data['Nu'], columns = ['Nu'])
 data.drop(['P', 'um', 'Pr', 'rho', 'k', 'Nu', 'At'], inplace = True, axis = 1)
 
 
-column1 = data1.columns.to_list()
-data1.columns = [a.strip() for a in column1]
+
 
 
 fluid_dummy1 = pd.get_dummies(data1['Fluid'], drop_first = True)
@@ -1948,8 +1865,8 @@ lgb_reg = lgb.LGBMRegressor(random_state=42)
 
 
 param_dist = {
-    'n_estimators': [int(x) for x in np.linspace(start=200, stop=2000, num=10)],
-    'max_depth': [int(x) for x in np.linspace(3, 15, num=13)],
+    'n_estimators': np.arange(200, 2001, 200),
+    'max_depth': np.arange(3, 15,1),
     'learning_rate': [0.001, 0.01, 0.1, 0.2, 0.3],
     'subsample': [0.5, 0.7, 1.0],
     'colsample_bytree': [0.5, 0.7, 1.0],
@@ -2340,5 +2257,4 @@ y_test_original = y_scaler.inverse_transform(y_test.reshape(-1, 1))
 
 mlp_result = pd.concat([pd.DataFrame(y_original), pd.DataFrame(y_test_original)], axis=1)
 mlp_result.to_csv('ann_results.csv', index=False)
-
 ```
