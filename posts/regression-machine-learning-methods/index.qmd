@@ -24,11 +24,11 @@ SVR exhibits the capability to address non-linear associations between input var
 
 *Hyperparameters of the Support Vector Regression (SVR) and Support Vector Machine (SVM) Algorithms*:
 
--   *Kernel*: Utilizing a kernel aids in identifying a hyperplane within a higher-dimensional space without escalating the computational cost. Typically, the computational cost rises as the dimension of the data increases. This escalation in dimensionality becomes necessary when a separating hyperplane cannot be found within the given dimension, compelling the need to transition to a higher-dimensional space.
+- *Kernel*: Utilizing a kernel aids in identifying a hyperplane within a higher-dimensional space without escalating the computational cost. Typically, the computational cost rises as the dimension of the data increases. This escalation in dimensionality becomes necessary when a separating hyperplane cannot be found within the given dimension, compelling the need to transition to a higher-dimensional space.
 
--   *Hyperplane:*In SVM, this essentially represents a demarcating line between two classes of data. However, in Support Vector Regression, this line serves as the basis for predicting continuous output values.
+- *Hyperplane:*In SVM, this essentially represents a demarcating line between two classes of data. However, in Support Vector Regression, this line serves as the basis for predicting continuous output values.
 
--   *Decision Boundary:* A decision boundary can be conceptualized as a demarcation line (for simplicity), with positive examples on one side and negative examples on the other. Along this line, examples may be classified as either positive or negative. This identical concept from SVM is also employed in Support Vector Regression.
+- *Decision Boundary:* A decision boundary can be conceptualized as a demarcation line (for simplicity), with positive examples on one side and negative examples on the other. Along this line, examples may be classified as either positive or negative. This identical concept from SVM is also employed in Support Vector Regression.
 
 There are many hyperplanes to separate the data, but in SVR, we look for a hyperplane with the maximum margin (distance) between two classes. So we choose the hyperplane so that the distance from it to the nearest data point on each side is maximized. (for support vector machine)
 
